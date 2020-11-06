@@ -1,7 +1,7 @@
 [gd_scene load_steps=124 format=2]
 
 [ext_resource path="res://Scripts/CameraMovement.gd" type="Script" id=1]
-[ext_resource path="res://qgis-bin_dwFqtblRa9.png" type="Texture" id=2]
+[ext_resource path="res://MIF3FloorPhoto.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/RaycastRenderer.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/LogPathLossCalculator.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]

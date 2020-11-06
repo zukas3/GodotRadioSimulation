@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/qgis-bin_dwFqtblRa9.png-3b0d629e97c9924cbfa17ede3d21a5a2.stex"
+path="res://.import/MIF3FloorPhoto.png-a458d80e54948e1927fb9775d61129cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://qgis-bin_dwFqtblRa9.png"
-dest_files=[ "res://.import/qgis-bin_dwFqtblRa9.png-3b0d629e97c9924cbfa17ede3d21a5a2.stex" ]
+source_file="res://MIF3FloorPhoto.png"
+dest_files=[ "res://.import/MIF3FloorPhoto.png-a458d80e54948e1927fb9775d61129cf.stex" ]
 
 [params]
 
