@@ -495,9 +495,14 @@ script = ExtResource( 3 )
 position = Vector2( -0.490433, -2.3273 )
 width = 5.0
 
-[node name="Calculator" type="Node2D" parent="."]
-position = Vector2( 352.796, 295.997 )
+[node name="RadioCalculator" type="Node2D" parent="."]
+position = Vector2( 29.3122, 20.304 )
 script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="RadioCalculator"]
+modulate = Color( 0.435294, 1, 0.298039, 1 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
 
 [node name="MapCreator" type="Node2D" parent="."]
 position = Vector2( -113.254, 147.615 )
@@ -1338,6 +1343,20 @@ position = Vector2( 25.1767, -75.5632 )
 scale = Vector2( 0.55455, 0.55455 )
 texture = ExtResource( 5 )
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="Beacon_4"]
+margin_left = -10.6425
+margin_top = -12.3355
+margin_right = 7.35748
+margin_bottom = 4.66446
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Beacon_5" type="Node2D" parent="." groups=[
 "beacons",
 ]]
@@ -1347,6 +1366,20 @@ position = Vector2( 512.393, 12.5363 )
 scale = Vector2( 0.55455, 0.55455 )
 texture = ExtResource( 5 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Beacon_5"]
+margin_left = -9.09479
+margin_top = -11.2446
+margin_right = 8.90521
+margin_bottom = 5.75545
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Beacon_6" type="Node2D" parent="." groups=[
 "beacons",
 ]]
@@ -1354,4 +1387,9 @@ position = Vector2( -819.777, -453.323 )
 
 [node name="Sprite" type="Sprite" parent="Beacon_6"]
 scale = Vector2( 0.55455, 0.55455 )
+texture = ExtResource( 5 )
+
+[node name="example" type="Sprite" parent="."]
+position = Vector2( -418.276, 129.105 )
+scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 5 )
