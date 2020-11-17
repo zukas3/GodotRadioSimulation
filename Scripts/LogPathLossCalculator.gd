@@ -5,8 +5,8 @@ const gamma = 2.2 # Path loss exponent
 const normal = 0
 
 const fsplConst = -27.55 # Free Space Path loss constant when in meters and megahertz
+const meterInGodotUnits = 29.64959568 # approximately
 
-var distance = 25 # In meters
 var refDistance = 2 # d0
 var frequency = 2.4 * 1000 # 2.4 GHz in MHz
 var transmitterGain = -8 # in dB
@@ -15,20 +15,50 @@ var receiverGain = -1.1 # in dB
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var result
+	var localPos = get_global_position()
 	
-	result = calculateLogDistancePathLoss()
-	print("LDPL: " +  str(result) + " dB")
-	result = calculateITU(distance)
-	print("ITU: " +  str(result) + " dB")
-	result = calculateMotleyKeenan([1])
-	print("MotleyKeenan: " +  str(result) + " dB")
-	pass # Replace with function body.
-
+	var beacons = get_tree().get_nodes_in_group("beacons")
+	for beacon in beacons:
+		print("--" + beacon.name + "--")
+		var beaconPos = beacon.get_global_position();
+		var space_state = get_world_2d().direct_space_state
+		var result = space_state.intersect_ray(localPos, beaconPos)
+		
+		# Find all obstacles
+		var hits = []
+		var obstacles = []
+		while(true):
+			var ray_result = space_state.intersect_ray(localPos, beaconPos, hits)
+			if(ray_result.empty()):
+				break
+			
+			hits.append(ray_result.collider)
+			obstacles.append(12) # Concrete wall index
+		
+		var distance = beaconPos.distance_to(localPos) / meterInGodotUnits
+		calculateAllTypes(distance, obstacles)
+		print()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func calculateRadioLinkBudget(loss):
+	var rlb = transmitterGain + receiverGain - loss
+	return rlb
+
+func calculateAllTypes(distance, obstacles):
+	var result
+	
+	result = calculateLogDistancePathLoss(distance)
+	print("LDPL: " +  str(calculateRadioLinkBudget(result)) + " dB")
+	result = calculateITU(distance)
+	print("ITU: " +  str(calculateRadioLinkBudget(result)) + " dB")
+	result = calculateMotleyKeenan(distance, obstacles)
+	print("MotleyKeenan: " +  str(calculateRadioLinkBudget(result)) + " dB")
+	pass # Replace with function body.
+
 
 # Calculates path loss using reference distance
 func calculateFreeSpacePathLoss():
@@ -39,11 +69,11 @@ func calculateFreeSpacePathLoss():
 	return fspl
 
 
-func calculateLogDistancePathLoss():
+func calculateLogDistancePathLoss(distance):
 	var pl = calculateFreeSpacePathLoss() + 10 * gamma * (log(distance/refDistance) / log(10)) + normal
 	return pl
 
-func calculateMotleyKeenan(obstacles):
+func calculateMotleyKeenan(distance, obstacles):
 	
 	var sigma = 0;
 	for i in range(0, obstacles.size()):
@@ -52,9 +82,9 @@ func calculateMotleyKeenan(obstacles):
 	var pl = calculateFreeSpacePathLoss() + 10 * gamma * (log(distance/refDistance) / log(10)) + sigma
 	return pl
 
-func calculateITU(distanceInMeter):
+func calculateITU(distance):
 	var flog = 20 * (log(frequency) / log(10)) 
-	var nlog = 30 * (log(distanceInMeter)/log(10))
+	var nlog = 30 * (log(distance)/log(10))
 	# Floors are not important for us so it is exempt
 	var itu = flog + nlog - 28
 	return itu
