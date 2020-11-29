@@ -496,7 +496,7 @@ position = Vector2( -0.490433, -2.3273 )
 width = 5.0
 
 [node name="RadioCalculator" type="Node2D" parent="."]
-position = Vector2( 29.3122, 20.304 )
+position = Vector2( 458.416, 17.7967 )
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="RadioCalculator"]
@@ -1333,6 +1333,20 @@ position = Vector2( -379.28, -170.337 )
 [node name="Sprite" type="Sprite" parent="Beacon_3"]
 scale = Vector2( 0.55455, 0.55455 )
 texture = ExtResource( 5 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Beacon_3"]
+margin_left = -8.43909
+margin_top = -10.539
+margin_right = 9.56091
+margin_bottom = 6.46097
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Beacon_4" type="Node2D" parent="." groups=[
 "beacons",

@@ -18,12 +18,12 @@ func _ready():
 	var localPos = get_global_position()
 	
 	var beacons = get_tree().get_nodes_in_group("beacons")
+	print("Calculating radio link budgets")
 	for beacon in beacons:
 		print("--" + beacon.name + "--")
 		var beaconPos = beacon.get_global_position();
 		var space_state = get_world_2d().direct_space_state
 		var result = space_state.intersect_ray(localPos, beaconPos)
-		
 		# Find all obstacles
 		var hits = []
 		var obstacles = []
@@ -36,6 +36,7 @@ func _ready():
 			obstacles.append(12) # Concrete wall index
 		
 		var distance = beaconPos.distance_to(localPos) / meterInGodotUnits
+		print("Distance: " + str(distance) + " Obstacles:" + str(obstacles))
 		calculateAllTypes(distance, obstacles)
 		print()
 	pass
