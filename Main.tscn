@@ -1,482 +1,483 @@
-[gd_scene load_steps=124 format=2]
+[gd_scene load_steps=125 format=2]
 
 [ext_resource path="res://Scripts/CameraMovement.gd" type="Script" id=1]
 [ext_resource path="res://MIF3FloorPhoto.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/RaycastRenderer.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/LogPathLossCalculator.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/simulation_runner.gd" type="Script" id=6]
 
 [sub_resource type="SegmentShape2D" id=1]
-a = Vector2( 189.058, -492.24 )
-b = Vector2( 185.787, -275.078 )
+a = Vector2( 169.774, -761.004 )
+b = Vector2( 166.837, -425.271 )
 
 [sub_resource type="SegmentShape2D" id=2]
-a = Vector2( 185.787, -275.078 )
-b = Vector2( 290.437, -219.371 )
+a = Vector2( 166.837, -425.271 )
+b = Vector2( 260.812, -339.148 )
 
 [sub_resource type="SegmentShape2D" id=3]
-a = Vector2( 290.437, -219.371 )
-b = Vector2( 677.966, -214.65 )
+a = Vector2( 260.812, -339.148 )
+b = Vector2( 608.814, -331.85 )
 
 [sub_resource type="SegmentShape2D" id=4]
-a = Vector2( 677.966, -214.65 )
-b = Vector2( 1098.2, -448.808 )
+a = Vector2( 608.814, -331.85 )
+b = Vector2( 986.182, -693.857 )
 
 [sub_resource type="SegmentShape2D" id=5]
-a = Vector2( 1098.2, -448.808 )
-b = Vector2( 1453.03, -231.646 )
+a = Vector2( 986.182, -693.857 )
+b = Vector2( 1304.82, -358.124 )
 
 [sub_resource type="SegmentShape2D" id=6]
-a = Vector2( 1453.03, -231.646 )
-b = Vector2( 1094.93, -36.1993 )
+a = Vector2( 1304.82, -358.124 )
+b = Vector2( 983.246, -55.9641 )
 
 [sub_resource type="SegmentShape2D" id=7]
-a = Vector2( 1094.93, -36.1993 )
-b = Vector2( 1247, 51.6101 )
+a = Vector2( 983.246, -55.9641 )
+b = Vector2( 1119.8, 79.7892 )
 
 [sub_resource type="SegmentShape2D" id=8]
-a = Vector2( 1247, 51.6101 )
-b = Vector2( 1086.75, 140.364 )
+a = Vector2( 1119.8, 79.7892 )
+b = Vector2( 975.904, 217.002 )
 
 [sub_resource type="SegmentShape2D" id=9]
-a = Vector2( 1086.75, 140.364 )
-b = Vector2( 929.779, 48.7775 )
+a = Vector2( 975.904, 217.002 )
+b = Vector2( 834.941, 75.4101 )
 
 [sub_resource type="SegmentShape2D" id=10]
-a = Vector2( 929.779, 48.7775 )
-b = Vector2( 849.656, 88.4334 )
+a = Vector2( 834.941, 75.4101 )
+b = Vector2( 762.992, 136.718 )
 
 [sub_resource type="SegmentShape2D" id=11]
-a = Vector2( 849.656, 88.4334 )
-b = Vector2( -895.044, 86.5451 )
+a = Vector2( 762.992, 136.718 )
+b = Vector2( -803.749, 133.799 )
 
 [sub_resource type="SegmentShape2D" id=12]
-a = Vector2( -895.044, 86.5451 )
-b = Vector2( -895.044, -92.8505 )
+a = Vector2( -803.749, 133.799 )
+b = Vector2( -803.749, -143.547 )
 
 [sub_resource type="SegmentShape2D" id=13]
-a = Vector2( -895.044, -92.8505 )
-b = Vector2( -1028.04, -171.381 )
+a = Vector2( -803.749, -143.547 )
+b = Vector2( -923.177, -264.955 )
 
 [sub_resource type="SegmentShape2D" id=14]
-a = Vector2( -1028.04, -171.381 )
-b = Vector2( -1027.35, -221.231 )
+a = Vector2( -923.177, -264.955 )
+b = Vector2( -922.562, -342.024 )
 
 [sub_resource type="SegmentShape2D" id=15]
-a = Vector2( -1027.35, -221.231 )
-b = Vector2( -1112.52, -221.26 )
+a = Vector2( -922.562, -342.024 )
+b = Vector2( -999.041, -342.068 )
 
 [sub_resource type="SegmentShape2D" id=16]
-a = Vector2( -1112.52, -221.26 )
-b = Vector2( -1109.25, -493.185 )
+a = Vector2( -999.041, -342.068 )
+b = Vector2( -996.105, -762.463 )
 
 [sub_resource type="SegmentShape2D" id=17]
-a = Vector2( -1109.25, -493.185 )
-b = Vector2( -1109.25, -493.185 )
+a = Vector2( -996.105, -762.463 )
+b = Vector2( -996.105, -762.463 )
 
 [sub_resource type="SegmentShape2D" id=18]
-a = Vector2( -1109.25, -493.185 )
-b = Vector2( 189.058, -492.24 )
+a = Vector2( -996.105, -762.463 )
+b = Vector2( 169.774, -761.004 )
 
 [sub_resource type="SegmentShape2D" id=19]
-a = Vector2( -1027.35, -221.231 )
-b = Vector2( -816.302, -220.836 )
+a = Vector2( -922.562, -342.024 )
+b = Vector2( -733.039, -341.413 )
 
 [sub_resource type="SegmentShape2D" id=20]
-a = Vector2( -816.302, -220.836 )
-b = Vector2( -774.197, -220.793 )
+a = Vector2( -733.039, -341.413 )
+b = Vector2( -695.229, -341.345 )
 
 [sub_resource type="SegmentShape2D" id=21]
-a = Vector2( -774.197, -220.793 )
-b = Vector2( -774.197, -220.795 )
+a = Vector2( -695.229, -341.345 )
+b = Vector2( -695.229, -341.349 )
 
 [sub_resource type="SegmentShape2D" id=22]
-a = Vector2( -926.278, -360.844 )
-b = Vector2( -741.477, -360.844 )
+a = Vector2( -831.798, -557.865 )
+b = Vector2( -665.846, -557.865 )
 
 [sub_resource type="SegmentShape2D" id=23]
-a = Vector2( -741.477, -360.844 )
-b = Vector2( -701.744, -360.844 )
+a = Vector2( -665.846, -557.865 )
+b = Vector2( -630.166, -557.865 )
 
 [sub_resource type="SegmentShape2D" id=24]
-a = Vector2( -925.924, -397.751 )
-b = Vector2( -838.57, -397.751 )
+a = Vector2( -831.48, -614.923 )
+b = Vector2( -753.036, -614.923 )
 
 [sub_resource type="SegmentShape2D" id=25]
-a = Vector2( -741.477, -492.61 )
-b = Vector2( -741.476, -397.75 )
+a = Vector2( -665.846, -761.575 )
+b = Vector2( -665.846, -614.921 )
 
 [sub_resource type="SegmentShape2D" id=26]
-a = Vector2( -574.81, -360.818 )
-b = Vector2( -574.811, -221.672 )
+a = Vector2( -516.18, -557.824 )
+b = Vector2( -516.18, -342.705 )
 
 [sub_resource type="SegmentShape2D" id=27]
-a = Vector2( -926.354, -493.074 )
-b = Vector2( -926.364, -397.741 )
+a = Vector2( -831.866, -762.292 )
+b = Vector2( -831.875, -614.907 )
 
 [sub_resource type="SegmentShape2D" id=28]
-a = Vector2( -926.385, -376.431 )
-b = Vector2( -926.403, -247.804 )
+a = Vector2( -831.893, -581.963 )
+b = Vector2( -831.91, -383.105 )
 
 [sub_resource type="SegmentShape2D" id=29]
-a = Vector2( -828.317, -492.851 )
-b = Vector2( -828.317, -415.476 )
+a = Vector2( -743.829, -761.947 )
+b = Vector2( -743.829, -642.326 )
 
 [sub_resource type="SegmentShape2D" id=30]
-a = Vector2( -741.476, -397.75 )
-b = Vector2( -483.953, -397.75 )
+a = Vector2( -665.846, -614.921 )
+b = Vector2( -434.59, -614.922 )
 
 [sub_resource type="SegmentShape2D" id=31]
-a = Vector2( -648.71, -360.844 )
-b = Vector2( -574.81, -360.818 )
+a = Vector2( -582.542, -557.865 )
+b = Vector2( -516.18, -557.824 )
 
 [sub_resource type="SegmentShape2D" id=32]
-a = Vector2( -574.81, -353.196 )
-b = Vector2( -122.318, -353.222 )
+a = Vector2( -516.18, -546.041 )
+b = Vector2( -109.841, -546.082 )
 
 [sub_resource type="SegmentShape2D" id=33]
-a = Vector2( -412.534, -397.751 )
-b = Vector2( -141.71, -397.751 )
+a = Vector2( -370.456, -614.922 )
+b = Vector2( -127.255, -614.923 )
 
 [sub_resource type="SegmentShape2D" id=34]
-a = Vector2( -428.798, -397.75 )
-b = Vector2( -412.534, -397.751 )
+a = Vector2( -385.06, -614.922 )
+b = Vector2( -370.456, -614.922 )
 
 [sub_resource type="SegmentShape2D" id=35]
-a = Vector2( -80.8979, -397.751 )
-b = Vector2( -36.3309, -397.751 )
+a = Vector2( -72.6463, -614.923 )
+b = Vector2( -32.6252, -614.923 )
 
 [sub_resource type="SegmentShape2D" id=36]
-a = Vector2( -36.3309, -397.751 )
-b = Vector2( -36.3309, -491.997 )
+a = Vector2( -32.6252, -614.923 )
+b = Vector2( -32.6252, -760.627 )
 
 [sub_resource type="SegmentShape2D" id=37]
-a = Vector2( -36.3309, -491.997 )
-b = Vector2( -36.3309, -378.307 )
+a = Vector2( -32.6252, -760.627 )
+b = Vector2( -32.6252, -584.863 )
 
 [sub_resource type="SegmentShape2D" id=38]
-a = Vector2( -412.534, -397.751 )
-b = Vector2( -412.534, -492.238 )
+a = Vector2( -370.456, -614.922 )
+b = Vector2( -370.456, -761 )
 
 [sub_resource type="SegmentShape2D" id=39]
-a = Vector2( -122.318, -219.654 )
-b = Vector2( -122.324, -236.624 )
+a = Vector2( -109.841, -339.585 )
+b = Vector2( -109.847, -365.82 )
 
 [sub_resource type="SegmentShape2D" id=40]
-a = Vector2( -36.3309, -350.134 )
-b = Vector2( -36.3309, -295.829 )
+a = Vector2( -32.6252, -541.307 )
+b = Vector2( -32.6252, -457.351 )
 
 [sub_resource type="SegmentShape2D" id=41]
-a = Vector2( -122.33, -263.573 )
-b = Vector2( -122.343, -353.223 )
+a = Vector2( -109.853, -407.483 )
+b = Vector2( -109.864, -546.082 )
 
 [sub_resource type="SegmentShape2D" id=42]
-a = Vector2( -36.3309, -272.555 )
-b = Vector2( -36.3309, -220.446 )
+a = Vector2( -32.6252, -421.37 )
+b = Vector2( -32.6252, -340.809 )
 
 [sub_resource type="SegmentShape2D" id=43]
-a = Vector2( -36.3309, -220.446 )
-b = Vector2( -36.2967, -219.764 )
+a = Vector2( -32.6252, -340.809 )
+b = Vector2( -32.5944, -339.755 )
 
 [sub_resource type="SegmentShape2D" id=44]
-a = Vector2( -36.3309, -307.261 )
-b = Vector2( 187.479, -307.261 )
+a = Vector2( -32.6252, -475.026 )
+b = Vector2( 168.356, -475.026 )
 
 [sub_resource type="SegmentShape2D" id=45]
-a = Vector2( 171.119, -219.6 )
-b = Vector2( 171.119, -230.668 )
+a = Vector2( 153.665, -339.501 )
+b = Vector2( 153.665, -356.613 )
 
 [sub_resource type="SegmentShape2D" id=46]
-a = Vector2( 171.119, -230.668 )
-b = Vector2( 209.455, -230.668 )
+a = Vector2( 153.665, -356.613 )
+b = Vector2( 188.091, -356.613 )
 
 [sub_resource type="SegmentShape2D" id=47]
-a = Vector2( 209.455, -230.668 )
-b = Vector2( 209.455, -219.6 )
+a = Vector2( 188.091, -356.613 )
+b = Vector2( 188.091, -339.501 )
 
 [sub_resource type="SegmentShape2D" id=48]
-a = Vector2( 209.455, -219.6 )
-b = Vector2( 209.43, -219.6 )
+a = Vector2( 188.091, -339.501 )
+b = Vector2( 188.068, -339.501 )
 
 [sub_resource type="SegmentShape2D" id=49]
-a = Vector2( 209.43, -219.6 )
-b = Vector2( 171.119, -219.6 )
+a = Vector2( 188.068, -339.501 )
+b = Vector2( 153.665, -339.501 )
 
 [sub_resource type="SegmentShape2D" id=50]
-a = Vector2( -36.2967, -219.764 )
-b = Vector2( -34.2394, -219.802 )
+a = Vector2( -32.5944, -339.755 )
+b = Vector2( -30.747, -339.814 )
 
 [sub_resource type="SegmentShape2D" id=51]
-a = Vector2( -34.2394, -219.802 )
-b = Vector2( 51.6851, -219.712 )
+a = Vector2( -30.747, -339.814 )
+b = Vector2( 46.4132, -339.674 )
 
 [sub_resource type="SegmentShape2D" id=52]
-a = Vector2( 51.6851, -219.712 )
-b = Vector2( 115.252, -219.622 )
+a = Vector2( 46.4132, -339.674 )
+b = Vector2( 103.497, -339.535 )
 
 [sub_resource type="SegmentShape2D" id=53]
-a = Vector2( 115.252, -219.622 )
-b = Vector2( 198.362, -268.298 )
+a = Vector2( 103.497, -339.535 )
+b = Vector2( 178.129, -414.788 )
 
 [sub_resource type="SegmentShape2D" id=54]
-a = Vector2( -667.213, -220.635 )
-b = Vector2( -574.81, -220.613 )
+a = Vector2( -599.157, -341.101 )
+b = Vector2( -516.18, -341.067 )
 
 [sub_resource type="SegmentShape2D" id=55]
-a = Vector2( -574.81, -220.613 )
-b = Vector2( -203.745, -220.072 )
+a = Vector2( -516.18, -341.067 )
+b = Vector2( -182.963, -340.231 )
 
 [sub_resource type="SegmentShape2D" id=56]
-a = Vector2( -203.745, -220.072 )
-b = Vector2( -122.317, -219.892 )
+a = Vector2( -182.963, -340.231 )
+b = Vector2( -109.84, -339.953 )
 
 [sub_resource type="SegmentShape2D" id=57]
-a = Vector2( -741.476, -220.703 )
-b = Vector2( -708.593, -220.658 )
+a = Vector2( -665.846, -341.206 )
+b = Vector2( -636.317, -341.137 )
 
 [sub_resource type="SegmentShape2D" id=58]
-a = Vector2( -926.403, -247.804 )
-b = Vector2( -926.407, -221.042 )
+a = Vector2( -831.91, -383.105 )
+b = Vector2( -831.914, -341.732 )
 
 [sub_resource type="SegmentShape2D" id=59]
-a = Vector2( -1028.17, -190.443 )
-b = Vector2( -895.652, -190.443 )
+a = Vector2( -923.298, -294.424 )
+b = Vector2( -804.296, -294.424 )
 
 [sub_resource type="SegmentShape2D" id=60]
-a = Vector2( -907.535, -99.9616 )
-b = Vector2( -270.227, -99.9537 )
+a = Vector2( -814.967, -154.541 )
+b = Vector2( -242.664, -154.528 )
 
 [sub_resource type="SegmentShape2D" id=61]
-a = Vector2( -678.966, -190.443 )
-b = Vector2( -678.939, -99.9585 )
+a = Vector2( -609.712, -294.424 )
+b = Vector2( -609.687, -154.536 )
 
 [sub_resource type="SegmentShape2D" id=62]
-a = Vector2( -853.036, -190.443 )
-b = Vector2( -678.966, -190.443 )
+a = Vector2( -766.027, -294.424 )
+b = Vector2( -609.712, -294.424 )
 
 [sub_resource type="SegmentShape2D" id=63]
-a = Vector2( -601.602, -190.443 )
-b = Vector2( -572.427, -190.443 )
+a = Vector2( -540.239, -294.424 )
+b = Vector2( -514.039, -294.424 )
 
 [sub_resource type="SegmentShape2D" id=64]
-a = Vector2( -583.9, -190.443 )
-b = Vector2( -583.937, -99.9573 )
+a = Vector2( -524.342, -294.424 )
+b = Vector2( -524.375, -154.534 )
 
 [sub_resource type="SegmentShape2D" id=65]
-a = Vector2( -583.913, -158.026 )
-b = Vector2( -621.927, -158.026 )
+a = Vector2( -524.354, -244.309 )
+b = Vector2( -558.49, -244.309 )
 
 [sub_resource type="SegmentShape2D" id=66]
-a = Vector2( -483.589, -190.443 )
-b = Vector2( -270.263, -190.443 )
+a = Vector2( -434.263, -294.424 )
+b = Vector2( -242.696, -294.424 )
 
 [sub_resource type="SegmentShape2D" id=67]
-a = Vector2( -539.973, -190.443 )
-b = Vector2( -539.973, -155.171 )
+a = Vector2( -484.896, -294.424 )
+b = Vector2( -484.896, -239.895 )
 
 [sub_resource type="SegmentShape2D" id=68]
-a = Vector2( -517.682, -190.443 )
-b = Vector2( -517.682, -155.187 )
+a = Vector2( -464.878, -294.424 )
+b = Vector2( -464.878, -239.92 )
 
 [sub_resource type="SegmentShape2D" id=69]
-a = Vector2( -517.682, -155.187 )
-b = Vector2( -539.977, -155.171 )
+a = Vector2( -464.878, -239.92 )
+b = Vector2( -484.899, -239.895 )
 
 [sub_resource type="SegmentShape2D" id=70]
-a = Vector2( -529.749, -155.179 )
-b = Vector2( -529.728, -99.9567 )
+a = Vector2( -475.715, -239.906 )
+b = Vector2( -475.696, -154.533 )
 
 [sub_resource type="SegmentShape2D" id=71]
-a = Vector2( -483.589, -190.443 )
-b = Vector2( -483.553, -99.9561 )
+a = Vector2( -434.263, -294.424 )
+b = Vector2( -434.231, -154.532 )
 
 [sub_resource type="SegmentShape2D" id=72]
-a = Vector2( -270.249, -172.898 )
-b = Vector2( -270.228, -99.963 )
+a = Vector2( -242.684, -267.3 )
+b = Vector2( -242.664, -154.543 )
 
 [sub_resource type="SegmentShape2D" id=73]
-a = Vector2( 656.123, -99.9537 )
-b = Vector2( 656.121, -158.713 )
+a = Vector2( 589.198, -154.528 )
+b = Vector2( 589.197, -245.371 )
 
 [sub_resource type="SegmentShape2D" id=74]
-a = Vector2( 478.241, -99.9549 )
-b = Vector2( 656.123, -99.9537 )
+a = Vector2( 429.46, -154.53 )
+b = Vector2( 589.198, -154.528 )
 
 [sub_resource type="SegmentShape2D" id=75]
-a = Vector2( -200.336, -99.9584 )
-b = Vector2( 418.25, -99.956 )
+a = Vector2( -179.902, -154.536 )
+b = Vector2( 375.589, -154.532 )
 
 [sub_resource type="SegmentShape2D" id=76]
-a = Vector2( 201.893, -99.9569 )
-b = Vector2( 201.893, -157.329 )
+a = Vector2( 181.3, -154.533 )
+b = Vector2( 181.3, -243.23 )
 
 [sub_resource type="SegmentShape2D" id=77]
-a = Vector2( 201.893, -157.329 )
-b = Vector2( 241.108, -157.329 )
+a = Vector2( 181.3, -243.23 )
+b = Vector2( 216.515, -243.23 )
 
 [sub_resource type="SegmentShape2D" id=78]
-a = Vector2( 418.25, -99.956 )
-b = Vector2( 418.25, -138.021 )
+a = Vector2( 375.589, -154.532 )
+b = Vector2( 375.589, -213.38 )
 
 [sub_resource type="SegmentShape2D" id=79]
-a = Vector2( 418.25, -138.021 )
-b = Vector2( 386.78, -157.329 )
+a = Vector2( 375.589, -213.38 )
+b = Vector2( 347.329, -243.23 )
 
 [sub_resource type="SegmentShape2D" id=80]
-a = Vector2( 277.987, -157.329 )
-b = Vector2( 278.023, -99.9563 )
+a = Vector2( 249.632, -243.23 )
+b = Vector2( 249.664, -154.532 )
 
 [sub_resource type="SegmentShape2D" id=81]
-a = Vector2( 277.987, -157.329 )
-b = Vector2( 306.752, -157.329 )
+a = Vector2( 249.632, -243.23 )
+b = Vector2( 275.464, -243.23 )
 
 [sub_resource type="SegmentShape2D" id=82]
-a = Vector2( 339.206, -157.329 )
-b = Vector2( 386.78, -157.329 )
+a = Vector2( 304.607, -243.23 )
+b = Vector2( 347.329, -243.23 )
 
 [sub_resource type="SegmentShape2D" id=83]
-a = Vector2( -790.28, -62.9198 )
-b = Vector2( -790.28, 86.289 )
+a = Vector2( -709.672, -97.2739 )
+b = Vector2( -709.672, 133.403 )
 
 [sub_resource type="SegmentShape2D" id=84]
-a = Vector2( -408.704, -62.9198 )
-b = Vector2( -408.704, 87.4248 )
+a = Vector2( -367.016, -97.2739 )
+b = Vector2( -367.016, 135.159 )
 
 [sub_resource type="SegmentShape2D" id=85]
-a = Vector2( -270.228, -62.9198 )
-b = Vector2( -270.228, 89.1284 )
+a = Vector2( -242.664, -97.274 )
+b = Vector2( -242.664, 137.792 )
 
 [sub_resource type="SegmentShape2D" id=86]
-a = Vector2( 169.07, -62.9198 )
-b = Vector2( 169.07, 86.8569 )
+a = Vector2( 151.825, -97.2739 )
+b = Vector2( 151.825, 134.281 )
 
 [sub_resource type="SegmentShape2D" id=87]
-a = Vector2( 656.121, -62.9198 )
-b = Vector2( 656.121, 88.7025 )
+a = Vector2( 589.197, -97.2739 )
+b = Vector2( 589.197, 137.134 )
 
 [sub_resource type="SegmentShape2D" id=88]
-a = Vector2( 611.129, -62.9198 )
-b = Vector2( 656.121, -62.9198 )
+a = Vector2( 548.793, -97.2739 )
+b = Vector2( 589.197, -97.2739 )
 
 [sub_resource type="SegmentShape2D" id=89]
-a = Vector2( 143.501, -62.9198 )
-b = Vector2( 572.774, -62.9198 )
+a = Vector2( 128.864, -97.2739 )
+b = Vector2( 514.351, -97.2739 )
 
 [sub_resource type="SegmentShape2D" id=90]
-a = Vector2( -309.376, -62.9198 )
-b = Vector2( 98.7539, -62.9198 )
+a = Vector2( -277.819, -97.2739 )
+b = Vector2( 88.681, -97.2739 )
 
 [sub_resource type="SegmentShape2D" id=91]
-a = Vector2( -535.568, -62.9198 )
-b = Vector2( -374.775, -62.9198 )
+a = Vector2( -480.94, -97.2739 )
+b = Vector2( -336.548, -97.2739 )
 
 [sub_resource type="SegmentShape2D" id=92]
-a = Vector2( -821.75, -62.9198 )
-b = Vector2( -581.79, -62.9198 )
+a = Vector2( -737.932, -97.2739 )
+b = Vector2( -522.447, -97.2739 )
 
 [sub_resource type="SegmentShape2D" id=93]
-a = Vector2( 741.163, 88.358 )
-b = Vector2( 741.681, -33.5323 )
+a = Vector2( 665.564, 136.602 )
+b = Vector2( 666.029, -51.841 )
 
 [sub_resource type="SegmentShape2D" id=94]
-a = Vector2( 741.681, -33.5323 )
-b = Vector2( 716.087, -33.5323 )
+a = Vector2( 666.029, -51.841 )
+b = Vector2( 643.046, -51.841 )
 
 [sub_resource type="SegmentShape2D" id=95]
-a = Vector2( 929.888, 48.7384 )
-b = Vector2( 765.284, -48.439 )
+a = Vector2( 835.039, 75.3495 )
+b = Vector2( 687.225, -74.8867 )
 
 [sub_resource type="SegmentShape2D" id=96]
-a = Vector2( 1013.11, 6.64472 )
-b = Vector2( 930.502, -39.9209 )
+a = Vector2( 909.774, 10.2727 )
+b = Vector2( 835.591, -61.7177 )
 
 [sub_resource type="SegmentShape2D" id=97]
-a = Vector2( 879.641, -160.041 )
-b = Vector2( 734.533, -243.502 )
+a = Vector2( 789.918, -247.423 )
+b = Vector2( 659.61, -376.453 )
 
 [sub_resource type="SegmentShape2D" id=98]
-a = Vector2( 734.533, -243.502 )
-b = Vector2( 732.267, -244.798 )
+a = Vector2( 659.61, -376.453 )
+b = Vector2( 657.576, -378.458 )
 
 [sub_resource type="SegmentShape2D" id=99]
-a = Vector2( 879.641, -160.041 )
-b = Vector2( 918.209, -181.606 )
+a = Vector2( 789.918, -247.423 )
+b = Vector2( 824.551, -280.762 )
 
 [sub_resource type="SegmentShape2D" id=100]
-a = Vector2( 918.209, -181.606 )
-b = Vector2( 918.218, -181.611 )
+a = Vector2( 824.551, -280.762 )
+b = Vector2( 824.56, -280.77 )
 
 [sub_resource type="SegmentShape2D" id=101]
-a = Vector2( 934.252, -128.631 )
-b = Vector2( 959.085, -142.215 )
+a = Vector2( 838.958, -198.863 )
+b = Vector2( 861.258, -219.865 )
 
 [sub_resource type="SegmentShape2D" id=102]
-a = Vector2( 962.942, -206.618 )
-b = Vector2( 815.799, -291.182 )
+a = Vector2( 864.722, -319.432 )
+b = Vector2( 732.587, -450.167 )
 
 [sub_resource type="SegmentShape2D" id=103]
-a = Vector2( 950.549, -199.689 )
-b = Vector2( 985.595, -219.284 )
+a = Vector2( 853.593, -308.719 )
+b = Vector2( 885.064, -339.013 )
 
 [sub_resource type="SegmentShape2D" id=104]
-a = Vector2( 985.595, -219.284 )
-b = Vector2( 985.595, -219.284 )
+a = Vector2( 885.064, -339.013 )
+b = Vector2( 885.064, -339.014 )
 
 [sub_resource type="SegmentShape2D" id=105]
-a = Vector2( 1014.56, -235.48 )
-b = Vector2( 1019.88, -238.453 )
+a = Vector2( 911.076, -364.053 )
+b = Vector2( 915.849, -368.648 )
 
 [sub_resource type="SegmentShape2D" id=106]
-a = Vector2( 1019.88, -238.453 )
-b = Vector2( 1240.41, -361.763 )
+a = Vector2( 915.849, -368.648 )
+b = Vector2( 1113.89, -559.286 )
 
 [sub_resource type="SegmentShape2D" id=107]
-a = Vector2( 1232.25, -291.648 )
-b = Vector2( 1232.39, -291.722 )
+a = Vector2( 1106.56, -450.888 )
+b = Vector2( 1106.69, -451.002 )
 
 [sub_resource type="SegmentShape2D" id=108]
-a = Vector2( 1232.39, -291.722 )
-b = Vector2( 1266.24, -310.239 )
+a = Vector2( 1106.69, -451.002 )
+b = Vector2( 1137.08, -479.63 )
 
 [sub_resource type="SegmentShape2D" id=109]
-a = Vector2( 1063.67, -199.427 )
-b = Vector2( 1180.69, -263.438 )
+a = Vector2( 955.175, -308.314 )
+b = Vector2( 1060.26, -407.276 )
 
 [sub_resource type="SegmentShape2D" id=110]
-a = Vector2( 1180.69, -263.438 )
-b = Vector2( 1200.06, -274.037 )
+a = Vector2( 1060.26, -407.276 )
+b = Vector2( 1077.65, -423.662 )
 
 [sub_resource type="SegmentShape2D" id=111]
-a = Vector2( 1200.06, -274.037 )
-b = Vector2( 1204.17, -276.287 )
+a = Vector2( 1077.65, -423.662 )
+b = Vector2( 1081.35, -427.14 )
 
 [sub_resource type="SegmentShape2D" id=112]
-a = Vector2( 988.048, -158.059 )
-b = Vector2( 988.655, -158.391 )
+a = Vector2( 887.268, -244.36 )
+b = Vector2( 887.812, -244.872 )
 
 [sub_resource type="SegmentShape2D" id=113]
-a = Vector2( 988.655, -158.391 )
-b = Vector2( 1003.7, -166.621 )
+a = Vector2( 887.812, -244.872 )
+b = Vector2( 901.322, -257.596 )
 
 [sub_resource type="SegmentShape2D" id=114]
-a = Vector2( 1003.7, -166.621 )
-b = Vector2( 1026.99, -179.362 )
+a = Vector2( 901.322, -257.596 )
+b = Vector2( 922.238, -277.294 )
 
 [sub_resource type="SegmentShape2D" id=115]
-a = Vector2( 1003.7, -166.621 )
-b = Vector2( 1164.42, -74.1285 )
+a = Vector2( 901.322, -257.596 )
+b = Vector2( 1045.65, -114.603 )
 
 [sub_resource type="SegmentShape2D" id=116]
-a = Vector2( 1180.69, -263.438 )
-b = Vector2( 1341.59, -170.823 )
+a = Vector2( 1060.26, -407.276 )
+b = Vector2( 1204.74, -264.092 )
 
 [sub_resource type="SegmentShape2D" id=117]
-a = Vector2( 934.252, -128.631 )
-b = Vector2( 1094.94, -36.2099 )
+a = Vector2( 838.958, -198.863 )
+b = Vector2( 983.256, -55.9805 )
 
 [sub_resource type="SegmentShape2D" id=118]
-a = Vector2( -741.477, -221.059 )
-b = Vector2( -741.477, -360.844 )
+a = Vector2( -665.846, -341.757 )
+b = Vector2( -665.846, -557.865 )
 
 [node name="RootScene" type="Node2D"]
 
@@ -485,6 +486,7 @@ current = true
 script = ExtResource( 1 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+visible = false
 position = Vector2( 377.588, -403.8 )
 rotation = 0.296706
 enabled = true
@@ -495,8 +497,16 @@ script = ExtResource( 3 )
 position = Vector2( -0.490433, -2.3273 )
 width = 5.0
 
-[node name="RadioCalculator" type="Node2D" parent="."]
-position = Vector2( 458.416, 17.7967 )
+[node name="SimulationRunner" type="Node2D" parent="."]
+script = ExtResource( 6 )
+test_locations = PoolVector2Array( 54.73, 25.263, 54.73, 25.263 )
+test_accurate_locations = [ Vector2( 54.73, 0 ), null ]
+
+[node name="RadioCalculator" type="Node2D" parent="." groups=[
+"receivers",
+]]
+position = Vector2( 264.032, -119.642 )
+scale = Vector2( 3, 3 )
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="RadioCalculator"]
@@ -504,837 +514,65 @@ modulate = Color( 0.435294, 1, 0.298039, 1 )
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 5 )
 
-[node name="MapCreator" type="Node2D" parent="."]
-position = Vector2( -113.254, 147.615 )
-scale = Vector2( 0.898, 1.546 )
+[node name="BeaconGroup" type="Node2D" parent="."]
+position = Vector2( 119.594, -139.379 )
 
-[node name="Line2D" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 189.058, -492.24, 185.787, -275.078, 290.437, -219.371, 677.966, -214.65, 1098.2, -448.808, 1453.03, -231.646, 1094.93, -36.1993, 1247, 51.6101, 1086.75, 140.364, 929.779, 48.7775, 849.656, 88.4334, -895.044, 86.5451, -895.044, -92.8505, -1028.04, -171.381, -1027.35, -221.231, -1112.52, -221.26, -1109.25, -493.185, -1109.25, -493.185, 189.058, -492.24 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 2 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 3 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 4 )
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 5 )
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 6 )
-
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 7 )
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 8 )
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 9 )
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 10 )
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 11 )
-
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 12 )
-
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 13 )
-
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 14 )
-
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 15 )
-
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 16 )
-
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 17 )
-
-[node name="CollisionShape2D18" type="CollisionShape2D" parent="MapCreator/Line2D/StaticBody2D"]
-shape = SubResource( 18 )
-
-[node name="Line2D2" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -1027.35, -221.231, -816.302, -220.836, -774.197, -220.793, -774.197, -220.795 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D2/StaticBody2D"]
-shape = SubResource( 19 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D2/StaticBody2D"]
-shape = SubResource( 20 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapCreator/Line2D2/StaticBody2D"]
-shape = SubResource( 21 )
-
-[node name="Line2D3" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -926.278, -360.844, -741.477, -360.844, -701.744, -360.844 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D3/StaticBody2D"]
-shape = SubResource( 22 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D3/StaticBody2D"]
-shape = SubResource( 23 )
-
-[node name="Line2D4" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -925.924, -397.751, -838.57, -397.751 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D4/StaticBody2D"]
-shape = SubResource( 24 )
-
-[node name="Line2D5" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -741.477, -492.61, -741.476, -397.75 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D5/StaticBody2D"]
-shape = SubResource( 25 )
-
-[node name="Line2D6" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -574.81, -360.818, -574.811, -221.672 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D6/StaticBody2D"]
-shape = SubResource( 26 )
-
-[node name="Line2D7" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -926.354, -493.074, -926.364, -397.741 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D7/StaticBody2D"]
-shape = SubResource( 27 )
-
-[node name="Line2D8" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -926.385, -376.431, -926.403, -247.804 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D8/StaticBody2D"]
-shape = SubResource( 28 )
-
-[node name="Line2D9" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -828.317, -492.851, -828.317, -415.476 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D9/StaticBody2D"]
-shape = SubResource( 29 )
-
-[node name="Line2D10" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -741.476, -397.75, -483.953, -397.75 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D10"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D10/StaticBody2D"]
-shape = SubResource( 30 )
-
-[node name="Line2D11" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -648.71, -360.844, -574.81, -360.818 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D11"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D11/StaticBody2D"]
-shape = SubResource( 31 )
-
-[node name="Line2D12" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -574.81, -353.196, -122.318, -353.222 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D12"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D12/StaticBody2D"]
-shape = SubResource( 32 )
-
-[node name="Line2D13" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -412.534, -397.751, -141.71, -397.751 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D13"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D13/StaticBody2D"]
-shape = SubResource( 33 )
-
-[node name="Line2D14" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -428.798, -397.75, -412.534, -397.751 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D14"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D14/StaticBody2D"]
-shape = SubResource( 34 )
-
-[node name="Line2D15" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -80.8979, -397.751, -36.3309, -397.751, -36.3309, -491.997, -36.3309, -378.307 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D15"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D15/StaticBody2D"]
-shape = SubResource( 35 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D15/StaticBody2D"]
-shape = SubResource( 36 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapCreator/Line2D15/StaticBody2D"]
-shape = SubResource( 37 )
-
-[node name="Line2D16" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -412.534, -397.751, -412.534, -492.238 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D16"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D16/StaticBody2D"]
-shape = SubResource( 38 )
-
-[node name="Line2D17" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -122.318, -219.654, -122.324, -236.624 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D17"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D17/StaticBody2D"]
-shape = SubResource( 39 )
-
-[node name="Line2D18" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -36.3309, -350.134, -36.3309, -295.829 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D18"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D18/StaticBody2D"]
-shape = SubResource( 40 )
-
-[node name="Line2D19" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -122.33, -263.573, -122.343, -353.223 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D19"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D19/StaticBody2D"]
-shape = SubResource( 41 )
-
-[node name="Line2D20" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -36.3309, -272.555, -36.3309, -220.446, -36.2967, -219.764 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D20"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D20/StaticBody2D"]
-shape = SubResource( 42 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D20/StaticBody2D"]
-shape = SubResource( 43 )
-
-[node name="Line2D21" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -36.3309, -307.261, 187.479, -307.261 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D21"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D21/StaticBody2D"]
-shape = SubResource( 44 )
-
-[node name="Line2D22" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 171.119, -219.6, 171.119, -230.668, 209.455, -230.668, 209.455, -219.6, 209.43, -219.6, 171.119, -219.6 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D22"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D22/StaticBody2D"]
-shape = SubResource( 45 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D22/StaticBody2D"]
-shape = SubResource( 46 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapCreator/Line2D22/StaticBody2D"]
-shape = SubResource( 47 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="MapCreator/Line2D22/StaticBody2D"]
-shape = SubResource( 48 )
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="MapCreator/Line2D22/StaticBody2D"]
-shape = SubResource( 49 )
-
-[node name="Line2D23" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -36.2967, -219.764, -34.2394, -219.802, 51.6851, -219.712, 115.252, -219.622, 198.362, -268.298 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D23"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D23/StaticBody2D"]
-shape = SubResource( 50 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D23/StaticBody2D"]
-shape = SubResource( 51 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapCreator/Line2D23/StaticBody2D"]
-shape = SubResource( 52 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="MapCreator/Line2D23/StaticBody2D"]
-shape = SubResource( 53 )
-
-[node name="Line2D24" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -667.213, -220.635, -574.81, -220.613, -203.745, -220.072, -122.317, -219.892 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D24"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D24/StaticBody2D"]
-shape = SubResource( 54 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D24/StaticBody2D"]
-shape = SubResource( 55 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapCreator/Line2D24/StaticBody2D"]
-shape = SubResource( 56 )
-
-[node name="Line2D25" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -741.476, -220.703, -708.593, -220.658 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D25"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D25/StaticBody2D"]
-shape = SubResource( 57 )
-
-[node name="Line2D26" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -926.403, -247.804, -926.407, -221.042 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D26"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D26/StaticBody2D"]
-shape = SubResource( 58 )
-
-[node name="Line2D27" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -1028.17, -190.443, -895.652, -190.443 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D27"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D27/StaticBody2D"]
-shape = SubResource( 59 )
-
-[node name="Line2D28" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -907.535, -99.9616, -270.227, -99.9537 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D28"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D28/StaticBody2D"]
-shape = SubResource( 60 )
-
-[node name="Line2D29" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -678.966, -190.443, -678.939, -99.9585 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D29"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D29/StaticBody2D"]
-shape = SubResource( 61 )
-
-[node name="Line2D30" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -853.036, -190.443, -678.966, -190.443 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D30"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D30/StaticBody2D"]
-shape = SubResource( 62 )
-
-[node name="Line2D31" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -601.602, -190.443, -572.427, -190.443 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D31"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D31/StaticBody2D"]
-shape = SubResource( 63 )
-
-[node name="Line2D32" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -583.9, -190.443, -583.937, -99.9573 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D32"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D32/StaticBody2D"]
-shape = SubResource( 64 )
-
-[node name="Line2D33" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -583.913, -158.026, -621.927, -158.026 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D33"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D33/StaticBody2D"]
-shape = SubResource( 65 )
-
-[node name="Line2D34" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -483.589, -190.443, -270.263, -190.443 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D34"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D34/StaticBody2D"]
-shape = SubResource( 66 )
-
-[node name="Line2D35" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -539.973, -190.443, -539.973, -155.171 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D35"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D35/StaticBody2D"]
-shape = SubResource( 67 )
-
-[node name="Line2D36" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -517.682, -190.443, -517.682, -155.187, -539.977, -155.171 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D36"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D36/StaticBody2D"]
-shape = SubResource( 68 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D36/StaticBody2D"]
-shape = SubResource( 69 )
-
-[node name="Line2D37" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -529.749, -155.179, -529.728, -99.9567 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D37"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D37/StaticBody2D"]
-shape = SubResource( 70 )
-
-[node name="Line2D38" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -483.589, -190.443, -483.553, -99.9561 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D38"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D38/StaticBody2D"]
-shape = SubResource( 71 )
-
-[node name="Line2D39" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -270.249, -172.898, -270.228, -99.963 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D39"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D39/StaticBody2D"]
-shape = SubResource( 72 )
-
-[node name="Line2D40" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 656.123, -99.9537, 656.121, -158.713 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D40"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D40/StaticBody2D"]
-shape = SubResource( 73 )
-
-[node name="Line2D41" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 478.241, -99.9549, 656.123, -99.9537 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D41"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D41/StaticBody2D"]
-shape = SubResource( 74 )
-
-[node name="Line2D42" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -200.336, -99.9584, 418.25, -99.956 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D42"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D42/StaticBody2D"]
-shape = SubResource( 75 )
-
-[node name="Line2D43" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 201.893, -99.9569, 201.893, -157.329, 241.108, -157.329 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D43"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D43/StaticBody2D"]
-shape = SubResource( 76 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D43/StaticBody2D"]
-shape = SubResource( 77 )
-
-[node name="Line2D44" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 418.25, -99.956, 418.25, -138.021, 386.78, -157.329 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D44"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D44/StaticBody2D"]
-shape = SubResource( 78 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D44/StaticBody2D"]
-shape = SubResource( 79 )
-
-[node name="Line2D45" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 277.987, -157.329, 278.023, -99.9563 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D45"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D45/StaticBody2D"]
-shape = SubResource( 80 )
-
-[node name="Line2D46" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 277.987, -157.329, 306.752, -157.329 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D46"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D46/StaticBody2D"]
-shape = SubResource( 81 )
-
-[node name="Line2D47" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 339.206, -157.329, 386.78, -157.329 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D47"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D47/StaticBody2D"]
-shape = SubResource( 82 )
-
-[node name="Line2D48" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -790.28, -62.9198, -790.28, 86.289 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D48"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D48/StaticBody2D"]
-shape = SubResource( 83 )
-
-[node name="Line2D49" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -408.704, -62.9198, -408.704, 87.4248 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D49"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D49/StaticBody2D"]
-shape = SubResource( 84 )
-
-[node name="Line2D50" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -270.228, -62.9198, -270.228, 89.1284 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D50"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D50/StaticBody2D"]
-shape = SubResource( 85 )
-
-[node name="Line2D51" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 169.07, -62.9198, 169.07, 86.8569 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D51"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D51/StaticBody2D"]
-shape = SubResource( 86 )
-
-[node name="Line2D52" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 656.121, -62.9198, 656.121, 88.7025 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D52"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D52/StaticBody2D"]
-shape = SubResource( 87 )
-
-[node name="Line2D53" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 611.129, -62.9198, 656.121, -62.9198 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D53"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D53/StaticBody2D"]
-shape = SubResource( 88 )
-
-[node name="Line2D54" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 143.501, -62.9198, 572.774, -62.9198 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D54"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D54/StaticBody2D"]
-shape = SubResource( 89 )
-
-[node name="Line2D55" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -309.376, -62.9198, 98.7539, -62.9198 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D55"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D55/StaticBody2D"]
-shape = SubResource( 90 )
-
-[node name="Line2D56" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -535.568, -62.9198, -374.775, -62.9198 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D56"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D56/StaticBody2D"]
-shape = SubResource( 91 )
-
-[node name="Line2D57" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -821.75, -62.9198, -581.79, -62.9198 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D57"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D57/StaticBody2D"]
-shape = SubResource( 92 )
-
-[node name="Line2D58" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 741.163, 88.358, 741.681, -33.5323, 716.087, -33.5323 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D58"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D58/StaticBody2D"]
-shape = SubResource( 93 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D58/StaticBody2D"]
-shape = SubResource( 94 )
-
-[node name="Line2D59" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 929.888, 48.7384, 765.284, -48.439 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D59"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D59/StaticBody2D"]
-shape = SubResource( 95 )
-
-[node name="Line2D60" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 1013.11, 6.64472, 930.502, -39.9209 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D60"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D60/StaticBody2D"]
-shape = SubResource( 96 )
-
-[node name="Line2D61" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 879.641, -160.041, 734.533, -243.502, 732.267, -244.798 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D61"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D61/StaticBody2D"]
-shape = SubResource( 97 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D61/StaticBody2D"]
-shape = SubResource( 98 )
-
-[node name="Line2D62" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 879.641, -160.041, 918.209, -181.606, 918.218, -181.611 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D62"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D62/StaticBody2D"]
-shape = SubResource( 99 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D62/StaticBody2D"]
-shape = SubResource( 100 )
-
-[node name="Line2D63" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 934.252, -128.631, 959.085, -142.215 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D63"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D63/StaticBody2D"]
-shape = SubResource( 101 )
-
-[node name="Line2D64" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 962.942, -206.618, 815.799, -291.182 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D64"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D64/StaticBody2D"]
-shape = SubResource( 102 )
-
-[node name="Line2D65" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 950.549, -199.689, 985.595, -219.284, 985.595, -219.284 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D65"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D65/StaticBody2D"]
-shape = SubResource( 103 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D65/StaticBody2D"]
-shape = SubResource( 104 )
-
-[node name="Line2D66" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 1014.56, -235.48, 1019.88, -238.453, 1240.41, -361.763 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D66"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D66/StaticBody2D"]
-shape = SubResource( 105 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D66/StaticBody2D"]
-shape = SubResource( 106 )
-
-[node name="Line2D67" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 1232.25, -291.648, 1232.39, -291.722, 1266.24, -310.239 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D67"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D67/StaticBody2D"]
-shape = SubResource( 107 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D67/StaticBody2D"]
-shape = SubResource( 108 )
-
-[node name="Line2D68" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 1063.67, -199.427, 1180.69, -263.438, 1200.06, -274.037, 1204.17, -276.287 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D68"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D68/StaticBody2D"]
-shape = SubResource( 109 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D68/StaticBody2D"]
-shape = SubResource( 110 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapCreator/Line2D68/StaticBody2D"]
-shape = SubResource( 111 )
-
-[node name="Line2D69" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 988.048, -158.059, 988.655, -158.391, 1003.7, -166.621, 1026.99, -179.362 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D69"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D69/StaticBody2D"]
-shape = SubResource( 112 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="MapCreator/Line2D69/StaticBody2D"]
-shape = SubResource( 113 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="MapCreator/Line2D69/StaticBody2D"]
-shape = SubResource( 114 )
-
-[node name="Line2D70" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 1003.7, -166.621, 1164.42, -74.1285 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D70"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D70/StaticBody2D"]
-shape = SubResource( 115 )
-
-[node name="Line2D71" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 1180.69, -263.438, 1341.59, -170.823 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D71"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D71/StaticBody2D"]
-shape = SubResource( 116 )
-
-[node name="Line2D72" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( 934.252, -128.631, 1094.94, -36.2099 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D72"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D72/StaticBody2D"]
-shape = SubResource( 117 )
-
-[node name="Line2D73" type="Line2D" parent="MapCreator"]
-points = PoolVector2Array( -741.477, -221.059, -741.477, -360.844 )
-width = 8.0
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MapCreator/Line2D73"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MapCreator/Line2D73/StaticBody2D"]
-shape = SubResource( 118 )
-
-[node name="MIFBackground" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.45098 )
-position = Vector2( 17.1123, -126.939 )
-scale = Vector2( 1.25624, 1.25624 )
-z_index = -1
-texture = ExtResource( 2 )
-
-[node name="Beacon_1" type="Node2D" parent="." groups=[
+[node name="Beacon_1" type="Node2D" parent="BeaconGroup" groups=[
 "beacons",
 ]]
-position = Vector2( -861.362, -77.7482 )
+position = Vector2( -910.825, -81.4026 )
 
-[node name="Sprite" type="Sprite" parent="Beacon_1"]
+[node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_1"]
 scale = Vector2( 0.55455, 0.55455 )
 texture = ExtResource( 5 )
 
-[node name="Beacon_2" type="Node2D" parent="." groups=[
+[node name="RichTextLabel3" type="RichTextLabel" parent="BeaconGroup/Beacon_1"]
+margin_left = -6.77747
+margin_top = -12.2234
+margin_right = 11.2225
+margin_bottom = 4.77667
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Beacon_2" type="Node2D" parent="BeaconGroup" groups=[
 "beacons",
 ]]
-position = Vector2( -186.512, -389.563 )
+position = Vector2( -189.185, -391.345 )
 
-[node name="Sprite" type="Sprite" parent="Beacon_2"]
+[node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_2"]
 scale = Vector2( 0.55455, 0.55455 )
 texture = ExtResource( 5 )
 
-[node name="Beacon_3" type="Node2D" parent="." groups=[
+[node name="RichTextLabel2" type="RichTextLabel" parent="BeaconGroup/Beacon_2"]
+margin_left = -9.91992
+margin_top = -13.7106
+margin_right = 8.08008
+margin_bottom = 3.28943
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Beacon_3" type="Node2D" parent="BeaconGroup" groups=[
 "beacons",
 ]]
-position = Vector2( -379.28, -170.337 )
+position = Vector2( -382.844, -179.317 )
 
-[node name="Sprite" type="Sprite" parent="Beacon_3"]
+[node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_3"]
 scale = Vector2( 0.55455, 0.55455 )
 texture = ExtResource( 5 )
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Beacon_3"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="BeaconGroup/Beacon_3"]
 margin_left = -8.43909
 margin_top = -10.539
 margin_right = 9.56091
@@ -1348,16 +586,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Beacon_4" type="Node2D" parent="." groups=[
+[node name="Beacon_4" type="Node2D" parent="BeaconGroup" groups=[
 "beacons",
 ]]
-position = Vector2( 25.1767, -75.5632 )
+position = Vector2( 33.1947, -70.2178 )
 
-[node name="Sprite" type="Sprite" parent="Beacon_4"]
+[node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_4"]
 scale = Vector2( 0.55455, 0.55455 )
 texture = ExtResource( 5 )
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Beacon_4"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="BeaconGroup/Beacon_4"]
 margin_left = -10.6425
 margin_top = -12.3355
 margin_right = 7.35748
@@ -1371,16 +609,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Beacon_5" type="Node2D" parent="." groups=[
+[node name="Beacon_5" type="Node2D" parent="BeaconGroup" groups=[
 "beacons",
 ]]
-position = Vector2( 512.393, 12.5363 )
+position = Vector2( 509.284, 13.0818 )
 
-[node name="Sprite" type="Sprite" parent="Beacon_5"]
+[node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_5"]
 scale = Vector2( 0.55455, 0.55455 )
 texture = ExtResource( 5 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Beacon_5"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BeaconGroup/Beacon_5"]
 margin_left = -9.09479
 margin_top = -11.2446
 margin_right = 8.90521
@@ -1394,16 +632,826 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Beacon_6" type="Node2D" parent="." groups=[
+[node name="Beacon_6" type="Node2D" parent="BeaconGroup" groups=[
 "beacons",
 ]]
-position = Vector2( -819.777, -453.323 )
+position = Vector2( -827.777, -454.323 )
 
-[node name="Sprite" type="Sprite" parent="Beacon_6"]
+[node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_6"]
 scale = Vector2( 0.55455, 0.55455 )
 texture = ExtResource( 5 )
 
-[node name="example" type="Sprite" parent="."]
-position = Vector2( -418.276, 129.105 )
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 5 )
+[node name="RichTextLabel2" type="RichTextLabel" parent="BeaconGroup/Beacon_6"]
+margin_left = -9.27307
+margin_top = -12.81
+margin_right = 8.72693
+margin_bottom = 4.19006
+rect_scale = Vector2( 2, 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "6"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RootMap" type="Node2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 169.774, -761.004, 166.837, -425.271, 260.812, -339.148, 608.814, -331.85, 986.182, -693.857, 1304.82, -358.124, 983.246, -55.9641, 1119.8, 79.7892, 975.904, 217.002, 834.941, 75.4101, 762.992, 136.718, -803.749, 133.799, -803.749, -143.547, -923.177, -264.955, -922.562, -342.024, -999.041, -342.068, -996.105, -762.463, -996.105, -762.463, 169.774, -761.004 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 7 )
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 12 )
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 13 )
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 15 )
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 16 )
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 17 )
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="RootMap/Line2D/StaticBody2D"]
+shape = SubResource( 18 )
+
+[node name="Line2D2" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -922.562, -342.024, -733.039, -341.413, -695.229, -341.345, -695.229, -341.349 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D2/StaticBody2D"]
+shape = SubResource( 19 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D2/StaticBody2D"]
+shape = SubResource( 20 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RootMap/Line2D2/StaticBody2D"]
+shape = SubResource( 21 )
+
+[node name="Line2D3" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -831.798, -557.865, -665.846, -557.865, -630.166, -557.865 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D3/StaticBody2D"]
+shape = SubResource( 22 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D3/StaticBody2D"]
+shape = SubResource( 23 )
+
+[node name="Line2D4" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -831.48, -614.923, -753.036, -614.923 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D4/StaticBody2D"]
+shape = SubResource( 24 )
+
+[node name="Line2D5" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -665.846, -761.575, -665.846, -614.921 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D5/StaticBody2D"]
+shape = SubResource( 25 )
+
+[node name="Line2D6" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -516.18, -557.824, -516.18, -342.705 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D6/StaticBody2D"]
+shape = SubResource( 26 )
+
+[node name="Line2D7" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -831.866, -762.292, -831.875, -614.907 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D7/StaticBody2D"]
+shape = SubResource( 27 )
+
+[node name="Line2D8" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -831.893, -581.963, -831.91, -383.105 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D8/StaticBody2D"]
+shape = SubResource( 28 )
+
+[node name="Line2D9" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -743.829, -761.947, -743.829, -642.326 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D9/StaticBody2D"]
+shape = SubResource( 29 )
+
+[node name="Line2D10" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -665.846, -614.921, -434.59, -614.922 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D10"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D10/StaticBody2D"]
+shape = SubResource( 30 )
+
+[node name="Line2D11" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -582.542, -557.865, -516.18, -557.824 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D11"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D11/StaticBody2D"]
+shape = SubResource( 31 )
+
+[node name="Line2D12" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -516.18, -546.041, -109.841, -546.082 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D12"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D12/StaticBody2D"]
+shape = SubResource( 32 )
+
+[node name="Line2D13" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -370.456, -614.922, -127.255, -614.923 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D13"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D13/StaticBody2D"]
+shape = SubResource( 33 )
+
+[node name="Line2D14" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -385.06, -614.922, -370.456, -614.922 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D14"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D14/StaticBody2D"]
+shape = SubResource( 34 )
+
+[node name="Line2D15" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -72.6463, -614.923, -32.6252, -614.923, -32.6252, -760.627, -32.6252, -584.863 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D15"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D15/StaticBody2D"]
+shape = SubResource( 35 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D15/StaticBody2D"]
+shape = SubResource( 36 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RootMap/Line2D15/StaticBody2D"]
+shape = SubResource( 37 )
+
+[node name="Line2D16" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -370.456, -614.922, -370.456, -761 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D16"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D16/StaticBody2D"]
+shape = SubResource( 38 )
+
+[node name="Line2D17" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -109.841, -339.585, -109.847, -365.82 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D17"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D17/StaticBody2D"]
+shape = SubResource( 39 )
+
+[node name="Line2D18" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -32.6252, -541.307, -32.6252, -457.351 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D18"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D18/StaticBody2D"]
+shape = SubResource( 40 )
+
+[node name="Line2D19" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -109.853, -407.483, -109.864, -546.082 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D19"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D19/StaticBody2D"]
+shape = SubResource( 41 )
+
+[node name="Line2D20" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -32.6252, -421.37, -32.6252, -340.809, -32.5944, -339.755 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D20"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D20/StaticBody2D"]
+shape = SubResource( 42 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D20/StaticBody2D"]
+shape = SubResource( 43 )
+
+[node name="Line2D21" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -32.6252, -475.026, 168.356, -475.026 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D21"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D21/StaticBody2D"]
+shape = SubResource( 44 )
+
+[node name="Line2D22" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 153.665, -339.501, 153.665, -356.613, 188.091, -356.613, 188.091, -339.501, 188.068, -339.501, 153.665, -339.501 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D22"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D22/StaticBody2D"]
+shape = SubResource( 45 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D22/StaticBody2D"]
+shape = SubResource( 46 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RootMap/Line2D22/StaticBody2D"]
+shape = SubResource( 47 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RootMap/Line2D22/StaticBody2D"]
+shape = SubResource( 48 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="RootMap/Line2D22/StaticBody2D"]
+shape = SubResource( 49 )
+
+[node name="Line2D23" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -32.5944, -339.755, -30.747, -339.814, 46.4132, -339.674, 103.497, -339.535, 178.129, -414.788 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D23"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D23/StaticBody2D"]
+shape = SubResource( 50 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D23/StaticBody2D"]
+shape = SubResource( 51 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RootMap/Line2D23/StaticBody2D"]
+shape = SubResource( 52 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RootMap/Line2D23/StaticBody2D"]
+shape = SubResource( 53 )
+
+[node name="Line2D24" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -599.157, -341.101, -516.18, -341.067, -182.963, -340.231, -109.84, -339.953 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D24"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D24/StaticBody2D"]
+shape = SubResource( 54 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D24/StaticBody2D"]
+shape = SubResource( 55 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RootMap/Line2D24/StaticBody2D"]
+shape = SubResource( 56 )
+
+[node name="Line2D25" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -665.846, -341.206, -636.317, -341.137 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D25"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D25/StaticBody2D"]
+shape = SubResource( 57 )
+
+[node name="Line2D26" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -831.91, -383.105, -831.914, -341.732 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D26"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D26/StaticBody2D"]
+shape = SubResource( 58 )
+
+[node name="Line2D27" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -923.298, -294.424, -804.296, -294.424 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D27"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D27/StaticBody2D"]
+shape = SubResource( 59 )
+
+[node name="Line2D28" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -814.967, -154.541, -242.664, -154.528 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D28"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D28/StaticBody2D"]
+shape = SubResource( 60 )
+
+[node name="Line2D29" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -609.712, -294.424, -609.687, -154.536 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D29"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D29/StaticBody2D"]
+shape = SubResource( 61 )
+
+[node name="Line2D30" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -766.027, -294.424, -609.712, -294.424 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D30"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D30/StaticBody2D"]
+shape = SubResource( 62 )
+
+[node name="Line2D31" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -540.239, -294.424, -514.039, -294.424 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D31"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D31/StaticBody2D"]
+shape = SubResource( 63 )
+
+[node name="Line2D32" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -524.342, -294.424, -524.375, -154.534 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D32"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D32/StaticBody2D"]
+shape = SubResource( 64 )
+
+[node name="Line2D33" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -524.354, -244.309, -558.49, -244.309 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D33"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D33/StaticBody2D"]
+shape = SubResource( 65 )
+
+[node name="Line2D34" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -434.263, -294.424, -242.696, -294.424 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D34"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D34/StaticBody2D"]
+shape = SubResource( 66 )
+
+[node name="Line2D35" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -484.896, -294.424, -484.896, -239.895 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D35"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D35/StaticBody2D"]
+shape = SubResource( 67 )
+
+[node name="Line2D36" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -464.878, -294.424, -464.878, -239.92, -484.899, -239.895 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D36"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D36/StaticBody2D"]
+shape = SubResource( 68 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D36/StaticBody2D"]
+shape = SubResource( 69 )
+
+[node name="Line2D37" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -475.715, -239.906, -475.696, -154.533 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D37"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D37/StaticBody2D"]
+shape = SubResource( 70 )
+
+[node name="Line2D38" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -434.263, -294.424, -434.231, -154.532 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D38"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D38/StaticBody2D"]
+shape = SubResource( 71 )
+
+[node name="Line2D39" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -242.684, -267.3, -242.664, -154.543 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D39"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D39/StaticBody2D"]
+shape = SubResource( 72 )
+
+[node name="Line2D40" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 589.198, -154.528, 589.197, -245.371 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D40"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D40/StaticBody2D"]
+shape = SubResource( 73 )
+
+[node name="Line2D41" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 429.46, -154.53, 589.198, -154.528 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D41"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D41/StaticBody2D"]
+shape = SubResource( 74 )
+
+[node name="Line2D42" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -179.902, -154.536, 375.589, -154.532 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D42"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D42/StaticBody2D"]
+shape = SubResource( 75 )
+
+[node name="Line2D43" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 181.3, -154.533, 181.3, -243.23, 216.515, -243.23 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D43"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D43/StaticBody2D"]
+shape = SubResource( 76 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D43/StaticBody2D"]
+shape = SubResource( 77 )
+
+[node name="Line2D44" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 375.589, -154.532, 375.589, -213.38, 347.329, -243.23 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D44"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D44/StaticBody2D"]
+shape = SubResource( 78 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D44/StaticBody2D"]
+shape = SubResource( 79 )
+
+[node name="Line2D45" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 249.632, -243.23, 249.664, -154.532 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D45"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D45/StaticBody2D"]
+shape = SubResource( 80 )
+
+[node name="Line2D46" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 249.632, -243.23, 275.464, -243.23 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D46"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D46/StaticBody2D"]
+shape = SubResource( 81 )
+
+[node name="Line2D47" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 304.607, -243.23, 347.329, -243.23 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D47"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D47/StaticBody2D"]
+shape = SubResource( 82 )
+
+[node name="Line2D48" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -709.672, -97.2739, -709.672, 133.403 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D48"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D48/StaticBody2D"]
+shape = SubResource( 83 )
+
+[node name="Line2D49" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -367.016, -97.2739, -367.016, 135.159 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D49"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D49/StaticBody2D"]
+shape = SubResource( 84 )
+
+[node name="Line2D50" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -242.664, -97.274, -242.664, 137.792 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D50"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D50/StaticBody2D"]
+shape = SubResource( 85 )
+
+[node name="Line2D51" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 151.825, -97.2739, 151.825, 134.281 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D51"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D51/StaticBody2D"]
+shape = SubResource( 86 )
+
+[node name="Line2D52" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 589.197, -97.2739, 589.197, 137.134 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D52"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D52/StaticBody2D"]
+shape = SubResource( 87 )
+
+[node name="Line2D53" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 548.793, -97.2739, 589.197, -97.2739 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D53"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D53/StaticBody2D"]
+shape = SubResource( 88 )
+
+[node name="Line2D54" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 128.864, -97.2739, 514.351, -97.2739 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D54"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D54/StaticBody2D"]
+shape = SubResource( 89 )
+
+[node name="Line2D55" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -277.819, -97.2739, 88.681, -97.2739 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D55"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D55/StaticBody2D"]
+shape = SubResource( 90 )
+
+[node name="Line2D56" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -480.94, -97.2739, -336.548, -97.2739 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D56"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D56/StaticBody2D"]
+shape = SubResource( 91 )
+
+[node name="Line2D57" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -737.932, -97.2739, -522.447, -97.2739 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D57"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D57/StaticBody2D"]
+shape = SubResource( 92 )
+
+[node name="Line2D58" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 665.564, 136.602, 666.029, -51.841, 643.046, -51.841 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D58"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D58/StaticBody2D"]
+shape = SubResource( 93 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D58/StaticBody2D"]
+shape = SubResource( 94 )
+
+[node name="Line2D59" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 835.039, 75.3495, 687.225, -74.8867 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D59"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D59/StaticBody2D"]
+shape = SubResource( 95 )
+
+[node name="Line2D60" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 909.774, 10.2727, 835.591, -61.7177 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D60"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D60/StaticBody2D"]
+shape = SubResource( 96 )
+
+[node name="Line2D61" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 789.918, -247.423, 659.61, -376.453, 657.576, -378.458 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D61"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D61/StaticBody2D"]
+shape = SubResource( 97 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D61/StaticBody2D"]
+shape = SubResource( 98 )
+
+[node name="Line2D62" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 789.918, -247.423, 824.551, -280.762, 824.56, -280.77 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D62"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D62/StaticBody2D"]
+shape = SubResource( 99 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D62/StaticBody2D"]
+shape = SubResource( 100 )
+
+[node name="Line2D63" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 838.958, -198.863, 861.258, -219.865 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D63"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D63/StaticBody2D"]
+shape = SubResource( 101 )
+
+[node name="Line2D64" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 864.722, -319.432, 732.587, -450.167 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D64"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D64/StaticBody2D"]
+shape = SubResource( 102 )
+
+[node name="Line2D65" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 853.593, -308.719, 885.064, -339.013, 885.064, -339.014 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D65"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D65/StaticBody2D"]
+shape = SubResource( 103 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D65/StaticBody2D"]
+shape = SubResource( 104 )
+
+[node name="Line2D66" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 911.076, -364.053, 915.849, -368.648, 1113.89, -559.286 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D66"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D66/StaticBody2D"]
+shape = SubResource( 105 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D66/StaticBody2D"]
+shape = SubResource( 106 )
+
+[node name="Line2D67" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 1106.56, -450.888, 1106.69, -451.002, 1137.08, -479.63 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D67"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D67/StaticBody2D"]
+shape = SubResource( 107 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D67/StaticBody2D"]
+shape = SubResource( 108 )
+
+[node name="Line2D68" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 955.175, -308.314, 1060.26, -407.276, 1077.65, -423.662, 1081.35, -427.14 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D68"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D68/StaticBody2D"]
+shape = SubResource( 109 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D68/StaticBody2D"]
+shape = SubResource( 110 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RootMap/Line2D68/StaticBody2D"]
+shape = SubResource( 111 )
+
+[node name="Line2D69" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 887.268, -244.36, 887.812, -244.872, 901.322, -257.596, 922.238, -277.294 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D69"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D69/StaticBody2D"]
+shape = SubResource( 112 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RootMap/Line2D69/StaticBody2D"]
+shape = SubResource( 113 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RootMap/Line2D69/StaticBody2D"]
+shape = SubResource( 114 )
+
+[node name="Line2D70" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 901.322, -257.596, 1045.65, -114.603 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D70"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D70/StaticBody2D"]
+shape = SubResource( 115 )
+
+[node name="Line2D71" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 1060.26, -407.276, 1204.74, -264.092 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D71"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D71/StaticBody2D"]
+shape = SubResource( 116 )
+
+[node name="Line2D72" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( 838.958, -198.863, 983.256, -55.9805 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D72"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D72/StaticBody2D"]
+shape = SubResource( 117 )
+
+[node name="Line2D73" type="Line2D" parent="RootMap"]
+points = PoolVector2Array( -665.846, -341.757, -665.846, -557.865 )
+width = 8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RootMap/Line2D73"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D73/StaticBody2D"]
+shape = SubResource( 118 )
+
+[node name="MIFBackground" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.45098 )
+position = Vector2( 131.505, -277.625 )
+scale = Vector2( 1.25624, 1.25624 )
+z_index = -1
+texture = ExtResource( 2 )

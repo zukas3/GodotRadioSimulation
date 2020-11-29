@@ -15,6 +15,9 @@ var receiverGain = -1.1 # in dB
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pass
+
+func calculate():
 	var localPos = get_global_position()
 	
 	var beacons = get_tree().get_nodes_in_group("beacons")
@@ -39,7 +42,7 @@ func _ready():
 		print("Distance: " + str(distance) + " Obstacles:" + str(obstacles))
 		calculateAllTypes(distance, obstacles)
 		print()
-	pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

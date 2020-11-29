@@ -11,6 +11,15 @@ var sceneOwner
 var mapWidth = 590
 var mapHeight = 260
 
+const SPACING_MULTIPLIER = 20
+
+const OFFSET_X = -25.2631
+const OFFSET_Y = -54.7298
+
+# These are used to stretch the walls accordingly
+const STRETCH_MULTIPLIER_X = 0.898
+const STRETCH_MULTIPLIER_Y = 1.546
+
 
 func _enter_tree():
 	dock = preload("res://addons/geojson/dock.tscn").instance()
@@ -69,11 +78,11 @@ func createWallFromCoordinates(coords):
 	
 	for pair in coords:
 		#var mPair = mercatorToCoords(pair[1], pair[0]) 
-		var mPair = [degreesToMeters(pair[0] - 25.2631), degreesToMeters(pair[1] - 54.7298)]
+		var mPair = [degreesToMeters(pair[0] + OFFSET_X), degreesToMeters(pair[1] + OFFSET_Y)]
 		#mPair = [mPair[0], mPair[1]]
 		print(mPair)
 		# Don't forget to flip Y since this is not usual cartesian
-		line.add_point(Vector2(mPair[0] * 20, -mPair[1] * 20))
+		line.add_point(Vector2(mPair[0] * SPACING_MULTIPLIER * STRETCH_MULTIPLIER_X, -mPair[1] * SPACING_MULTIPLIER * STRETCH_MULTIPLIER_Y))
 		
 	addCollisionToLine(line)
 	
