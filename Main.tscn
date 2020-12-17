@@ -481,6 +481,65 @@ b = Vector2( -665.846, -557.865 )
 
 [node name="RootScene" type="Node2D"]
 
+[node name="UICanvas" type="CanvasLayer" parent="."]
+
+[node name="UI" type="MarginContainer" parent="UICanvas"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 810.0
+margin_bottom = 26.0
+size_flags_horizontal = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="UICanvas/UI"]
+margin_right = 800.0
+margin_bottom = 51.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UICanvas/UI/VBox"]
+margin_right = 800.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( -295.819, -230.782 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IterationSlider" type="HSlider" parent="UICanvas/UI/VBox/HBoxContainer"]
+margin_right = 788.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+value = 10.0
+
+[node name="IterationLabel" type="Label" parent="UICanvas/UI/VBox/HBoxContainer"]
+margin_left = 792.0
+margin_top = 1.0
+margin_right = 800.0
+margin_bottom = 15.0
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UICanvas/UI/VBox"]
+margin_top = 20.0
+margin_right = 800.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( -295.819, -230.782 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InfoLabel" type="Label" parent="UICanvas/UI/VBox/HBoxContainer2"]
+margin_right = 38.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( -818.977, -403.82 )
+text = "dAWd
+dD"
+
+[node name="InfoLabel2" type="Label" parent="UICanvas/UI/VBox/HBoxContainer2"]
+margin_left = 42.0
+margin_right = 80.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( -818.977, -403.82 )
+text = "dAWd
+dD"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 1 )
@@ -502,11 +561,21 @@ script = ExtResource( 6 )
 test_locations = PoolVector2Array( 54.73, 25.263, 54.73, 25.263 )
 test_accurate_locations = [ Vector2( 54.73, 0 ), null ]
 
+[node name="PathPrefab" type="Sprite" parent="SimulationRunner" groups=[
+"path",
+]]
+modulate = Color( 0.521569, 0, 1, 1 )
+self_modulate = Color( 0.827451, 0, 1, 1 )
+position = Vector2( -142.366, -197.994 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+
 [node name="RadioCalculator" type="Node2D" parent="." groups=[
 "receivers",
 ]]
 position = Vector2( 264.032, -119.642 )
 scale = Vector2( 3, 3 )
+z_index = 1
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="RadioCalculator"]
@@ -1455,3 +1524,4 @@ position = Vector2( 131.505, -277.625 )
 scale = Vector2( 1.25624, 1.25624 )
 z_index = -1
 texture = ExtResource( 2 )
+[connection signal="value_changed" from="UICanvas/UI/VBox/HBoxContainer/IterationSlider" to="SimulationRunner" method="_on_IterationSlider_value_changed"]

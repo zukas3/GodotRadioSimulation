@@ -2,22 +2,22 @@ extends Node2D
 
 const c = 299792458.0 # Speed of the light
 const gamma = 2.2 # Path loss exponent
-const normal = 0
+export var normal = 14.1
 
 const fsplConst = -27.55 # Free Space Path loss constant when in meters and megahertz
 const meterInGodotUnits = 29.64959568 # approximately
 
-var refDistance = 2 # d0
-var frequency = 2.4 * 1000 # 2.4 GHz in MHz
-var transmitterGain = -8 # in dB
-var receiverGain = -1.1 # in dB
+export var refDistance = 2.0 # d0
+export var frequency = 2.4 * 1000 # 2.4 GHz in MHz
+export var transmitterGain = -8 # in dB
+export var receiverGain = -1.1 # in dB
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
-func calculate():
+func calculate_with_all():
 	var localPos = get_global_position()
 	
 	var beacons = get_tree().get_nodes_in_group("beacons")
@@ -36,7 +36,7 @@ func calculate():
 				break
 			
 			hits.append(ray_result.collider)
-			obstacles.append(12) # Concrete wall index
+			obstacles.append(12) # Concrete wall value used
 		
 		var distance = beaconPos.distance_to(localPos) / meterInGodotUnits
 		print("Distance: " + str(distance) + " Obstacles:" + str(obstacles))
@@ -48,20 +48,46 @@ func calculate():
 #func _process(delta):
 #	pass
 
+func calculate_to_position(position):
+	var localPos = get_global_position()
+	var beaconPos = position
+	var space_state = get_world_2d().direct_space_state
+	var result = space_state.intersect_ray(localPos, beaconPos)
+	# Find all obstacles
+	var hits = []
+	var obstacles = []
+	while(true):
+		var ray_result = space_state.intersect_ray(localPos, beaconPos, hits)
+		if(ray_result.empty()):
+			break
+			
+		hits.append(ray_result.collider)
+		obstacles.append(12) # Concrete wall index
+		
+	var distance = beaconPos.distance_to(localPos) / meterInGodotUnits
+	print("Distance: " + str(distance) + " Obstacles:" + str(obstacles))
+	return calculateAllTypes(distance, obstacles)
+	
+
 func calculateRadioLinkBudget(loss):
 	var rlb = transmitterGain + receiverGain - loss
+	if rlb <= -100:
+		rlb = 0
 	return rlb
 
 func calculateAllTypes(distance, obstacles):
 	var result
 	
 	result = calculateLogDistancePathLoss(distance)
-	print("LDPL: " +  str(calculateRadioLinkBudget(result)) + " dB")
+	var ldpl = "LDPL: " + "%.2f" % calculateRadioLinkBudget(result) + " dB"
+	print(ldpl)
 	result = calculateITU(distance)
-	print("ITU: " +  str(calculateRadioLinkBudget(result)) + " dB")
+	var itu = "ITU: " + "%.2f" % calculateRadioLinkBudget(result) + " dB"
+	print(itu)
 	result = calculateMotleyKeenan(distance, obstacles)
-	print("MotleyKeenan: " +  str(calculateRadioLinkBudget(result)) + " dB")
-	pass # Replace with function body.
+	var motley = "MotleyKeenan: " + "%.2f" % calculateRadioLinkBudget(result) + " dB"
+	print(motley)
+	return ldpl + "; " + itu + "; " + motley + "; " + "%.2f" % distance + "m "
 
 
 # Calculates path loss using reference distance
@@ -88,7 +114,7 @@ func calculateMotleyKeenan(distance, obstacles):
 
 func calculateITU(distance):
 	var flog = 20 * (log(frequency) / log(10)) 
-	var nlog = 30 * (log(distance)/log(10))
+	var nlog = 30 * (log(distance) / log(10))
 	# Floors are not important for us so it is exempt
 	var itu = flog + nlog - 28
 	return itu

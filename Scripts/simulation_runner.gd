@@ -22,9 +22,28 @@ const TEST_LOCATIONS = [[25.26321, 54.72989],
 export var test_locations = PoolVector2Array()
 export var test_accurate_locations = []
 
+# spreadsheet holding all the info about test run data
+var spreadsheet
+
+# UI
+onready var slider = $"../UICanvas/UI/VBox/HBoxContainer/IterationSlider"
+onready var label = $"../UICanvas/UI/VBox/HBoxContainer/IterationLabel"
+onready var infoLabel = $"../UICanvas/UI/VBox/HBoxContainer2/InfoLabel"
+onready var infoLabelSecond = $"../UICanvas/UI/VBox/HBoxContainer2/InfoLabel2"
+onready var pathPrefab = $"./PathPrefab"
+
+
+onready var receiver = get_tree().get_nodes_in_group("receivers")[0]
+onready var beacons = get_tree().get_nodes_in_group("beacons")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	spreadsheet = read_csv()
+	hook_to_ui()
+
+
+func debug_scan_all():
 	var receivers = get_tree().get_nodes_in_group("receivers")
 	var receiver = receivers[0]
 	
@@ -35,8 +54,6 @@ func _ready():
 		print(global_coords)
 	receiver.calculate()
 	
-	pass # Replace with function body.
-
 
 func projectionVectorToGlobalCoords(projection):
 	return Vector2(
@@ -47,7 +64,45 @@ func degreesToMeters(value):
 	# DEGREES * KM * M
 	return value * 111139.0
 
+func read_csv():
+	var spreadsheet = []
+	
+	var file = File.new()
+	file.open("res://Data/data_aggregated.gcsv", file.READ)
+	
+	while not file.eof_reached():
+		var line = file.get_csv_line()
+		spreadsheet.append(line)
+		
+	file.close()
+	
+	return spreadsheet;
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func scan_position(index):
+	var entry = spreadsheet[index]
+	
+	var long_and_lat = [float(entry[3]), float(entry[2])]
+	var global_coords = projectionVectorToGlobalCoords(long_and_lat)
+	
+	# receiver.calculate
+	receiver.global_position = global_coords
+	
+	# Display all original data
+	var spreadsheet_data = ""
+	var simulated_data = ""
+	for i in range(4, 10):
+		simulated_data += receiver.calculate_to_position(beacons[i-4].get_global_position()) + '\n'
+		spreadsheet_data += spreadsheet[0][i] + " - Captured: "  + "%.2f" % float(entry[i]) + '\n'
+		
+	infoLabel.text = spreadsheet_data #'{}\n{}\n'.format([entry[4], entry[5]], '{}')
+	infoLabelSecond.text = simulated_data
+	
+
+func hook_to_ui():
+	slider.min_value = 1;
+	slider.max_value = spreadsheet.size() - 1;
+
+
+func _on_IterationSlider_value_changed(value):
+	label.text = str(value)
+	scan_position(value)
