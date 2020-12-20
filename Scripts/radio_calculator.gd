@@ -68,11 +68,17 @@ func calculate_to_position(position):
 	print("Distance: " + str(distance) + " Obstacles:" + str(obstacles))
 	return calculateAllTypes(distance, obstacles)
 	
+func get_log_distance_to_position(position):
+	var localPos = get_global_position()
+	var beaconPos = position
+	var distance = beaconPos.distance_to(localPos) / meterInGodotUnits
+	var ldpl = calculateLogDistancePathLoss(distance)
+	ldpl = calculateRadioLinkBudget(ldpl)
+	return ldpl
+	
 
 func calculateRadioLinkBudget(loss):
 	var rlb = transmitterGain + receiverGain - loss
-	if rlb <= -100:
-		rlb = 0
 	return rlb
 
 func calculateAllTypes(distance, obstacles):

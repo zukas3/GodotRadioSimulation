@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[node name="PathPrefab" type="Sprite" groups=[
+"path",
+]]
+self_modulate = Color( 0, 1, 0.670588, 1 )
+position = Vector2( 0, -0.374573 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 1 )

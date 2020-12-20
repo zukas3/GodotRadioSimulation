@@ -1,11 +1,13 @@
-[gd_scene load_steps=125 format=2]
+[gd_scene load_steps=127 format=2]
 
 [ext_resource path="res://Scripts/CameraMovement.gd" type="Script" id=1]
 [ext_resource path="res://MIF3FloorPhoto.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/RaycastRenderer.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/LogPathLossCalculator.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/radio_calculator.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/simulation_runner.gd" type="Script" id=6]
+[ext_resource path="res://area_checker.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/beacon_ga_runner.gd" type="Script" id=8]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 169.774, -761.004 )
@@ -561,14 +563,12 @@ script = ExtResource( 6 )
 test_locations = PoolVector2Array( 54.73, 25.263, 54.73, 25.263 )
 test_accurate_locations = [ Vector2( 54.73, 0 ), null ]
 
-[node name="PathPrefab" type="Sprite" parent="SimulationRunner" groups=[
-"path",
-]]
-modulate = Color( 0.521569, 0, 1, 1 )
-self_modulate = Color( 0.827451, 0, 1, 1 )
-position = Vector2( -142.366, -197.994 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 5 )
+[node name="GeneticAlgorithmRunner" type="Node2D" parent="SimulationRunner"]
+script = ExtResource( 8 )
+generations_count = 50000
+mutation_rate = 0.15
+top_left_corner = Vector2( -1000, -762 )
+bottom_right_corner = Vector2( 1343, 252 )
 
 [node name="RadioCalculator" type="Node2D" parent="." groups=[
 "receivers",
@@ -1518,10 +1518,27 @@ width = 8.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RootMap/Line2D73/StaticBody2D"]
 shape = SubResource( 118 )
 
+[node name="Area2D" type="Area2D" parent="RootMap"]
+visible = false
+position = Vector2( -1.15839, 0.35791 )
+gravity = 0.0
+collision_layer = 2147483680
+collision_mask = 0
+script = ExtResource( 7 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RootMap/Area2D"]
+polygon = PoolVector2Array( -998.162, -763.343, 168.578, -766.517, 162.228, -425.226, 265.409, -331.569, 600.351, -326.807, 984.461, -693.334, 1298.77, -358.393, 979.699, -59.9614, 1122.56, 79.7299, 984.461, 211.484, 835.245, 76.5551, 768.574, 128.939, -809.302, 132.114, -806.127, -136.157, -920.42, -266.323, -923.595, -342.519, -1001.38, -339.344 )
+
 [node name="MIFBackground" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.45098 )
 position = Vector2( 131.505, -277.625 )
 scale = Vector2( 1.25624, 1.25624 )
-z_index = -1
+z_index = -5
 texture = ExtResource( 2 )
+
+[node name="top_left" type="Node2D" parent="."]
+position = Vector2( -1000.13, -762.813 )
+
+[node name="bottom_right" type="Node2D" parent="."]
+position = Vector2( 1343.4, 252.152 )
 [connection signal="value_changed" from="UICanvas/UI/VBox/HBoxContainer/IterationSlider" to="SimulationRunner" method="_on_IterationSlider_value_changed"]
