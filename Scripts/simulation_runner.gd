@@ -43,7 +43,7 @@ func _ready():
 	
 	spreadsheet = read_csv()
 	create_path()
-	begin_test_run()
+	#begin_test_run()
 	hook_to_ui()
 
 
@@ -78,7 +78,7 @@ func create_path():
 		path_nodes.append(node_copy)
 		
 		
-
+# CURRENTLY UNUSED
 func begin_test_run():
 	var totalDb = 0
 	var minDb = 0
@@ -107,14 +107,12 @@ func begin_test_run():
 	
 
 # Positions can be regarded as beacons
-func simulate_from_positions(positions) -> SimulationResults:
+func simulate_from_positions(positions, should_color=false) -> SimulationResults:
 	# Below -90 we wont tolerate signal loss
 	var tolerance = -90
 	
-	var totalDb = 0
-	var minDb = 0
-	var maxDb = -100
-	var incrementCount = 0
+	var totalDb = 0.0
+	var incrementCount = 1
 	var out_of_range_count = 0
 	
 	for node in path_nodes:
@@ -123,25 +121,25 @@ func simulate_from_positions(positions) -> SimulationResults:
 		for beacon_pos in positions:
 			receiver.global_position = node.global_position
 			var pl = receiver.get_log_distance_to_position(beacon_pos) 
-			totalDb += pl
-			incrementCount = incrementCount + 1
-			if minDb > pl:
-				minDb = pl
-			if maxDb < pl:
-				maxDb = pl
+			
 			if pl > tolerance:
 				reachable_beacon_count += 1
-		if reachable_beacon_count < 3:
+				var stupid = pl
+				totalDb += int((pl - totalDb) / incrementCount)
+				assert(typeof(totalDb) != TYPE_STRING)
+				incrementCount = incrementCount + 1
+		if reachable_beacon_count >= 3:
+			if should_color:
+				node.self_modulate = Color(0, 1, 0, 1)
+		else:
 			out_of_range_count += 1
+			if should_color:
+				node.self_modulate = Color(1, 0, 0, 1)
+			
 	
-	
-	totalDb = totalDb / incrementCount;
-	
-	# print("minDb - {0} dB, maxDb - {1} dB, totalDb - {2} dB".format([minDb, maxDb, totalDb]))
+
 	var results = SimulationResults.new()
 	results.totalDb = totalDb
-	results.minDb = minDb
-	results.maxDb = maxDb
 	results.out_of_range_count = out_of_range_count
 	return results
 	

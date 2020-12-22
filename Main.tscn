@@ -497,7 +497,7 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="UICanvas/UI"]
 margin_right = 800.0
-margin_bottom = 51.0
+margin_bottom = 34.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UICanvas/UI/VBox"]
 margin_right = 800.0
@@ -522,25 +522,23 @@ text = "0"
 [node name="HBoxContainer2" type="HBoxContainer" parent="UICanvas/UI/VBox"]
 margin_top = 20.0
 margin_right = 800.0
-margin_bottom = 51.0
+margin_bottom = 34.0
 rect_pivot_offset = Vector2( -295.819, -230.782 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="InfoLabel" type="Label" parent="UICanvas/UI/VBox/HBoxContainer2"]
-margin_right = 38.0
-margin_bottom = 31.0
+margin_right = 144.0
+margin_bottom = 14.0
 rect_pivot_offset = Vector2( -818.977, -403.82 )
-text = "dAWd
-dD"
+text = "Slide to update results"
 
 [node name="InfoLabel2" type="Label" parent="UICanvas/UI/VBox/HBoxContainer2"]
-margin_left = 42.0
-margin_right = 80.0
-margin_bottom = 31.0
+margin_left = 148.0
+margin_right = 292.0
+margin_bottom = 14.0
 rect_pivot_offset = Vector2( -818.977, -403.82 )
-text = "dAWd
-dD"
+text = "Slide to update results"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -565,8 +563,8 @@ test_accurate_locations = [ Vector2( 54.73, 0 ), null ]
 
 [node name="GeneticAlgorithmRunner" type="Node2D" parent="SimulationRunner"]
 script = ExtResource( 8 )
-generations_count = 50000
-mutation_rate = 0.15
+generations_count = 99999999
+mutation_rate = 0.25
 top_left_corner = Vector2( -1000, -762 )
 bottom_right_corner = Vector2( 1343, 252 )
 

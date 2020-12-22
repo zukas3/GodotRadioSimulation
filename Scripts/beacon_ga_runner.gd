@@ -14,9 +14,16 @@ class Helper:
 		self.tree = tree
 	
 	func random_node_position():
+		randomize()
 		var nodes = tree.get_nodes_in_group("path_nodes")
-		var random = randi() % nodes.size()
-		return nodes[random].global_position
+		var random_point = Vector2(0,0)
+		for i in range(3):
+			var random = randi() % nodes.size()
+			random_point += nodes[random].global_position
+			
+		random_point = random_point / 3
+		#randomPoint = random nodes[random].global_position + Vector2(rand_range(-250,250),rand_range(-250,250))
+		return random_point
 	
 	func random_position_in_building():
 		randomize()
@@ -51,9 +58,14 @@ class Individual:
 			
 	func has_similar_location(position:Vector2):
 		for pos in gene_locations:
-			if position.distance_to(pos) < 100:
+			if position.distance_to(pos) < 500:
 				return true
 		
+		return false
+	
+	static func sort_descending(a, b):
+		if a.fitness > b.fitness:
+			return true
 		return false
 	
 
@@ -83,14 +95,14 @@ class Population:
 		var result = sim_runner.simulate_from_positions(individual.gene_locations)
 		var fitness = 1.0
 		if result.out_of_range_count != 0:
-			fitness = (0.9 / result.out_of_range_count) + (60 / result.totalDb) * 0.1
+			fitness = (0.9 / result.out_of_range_count) + (-60.0 / result.totalDb) * 0.1
 		individual.fitness = fitness
 	
 	func calculate_all_fitness():
 		for individual in individuals:
 			calculate_fitness(individual)
 		
-	func get_most_fitting():
+	func get_most_fitting() -> Individual:
 		var currentIndividual = individuals[0]
 		for individual in individuals:
 			if individual.fitness > currentIndividual.fitness:
@@ -109,7 +121,7 @@ class Population:
 		return secondIndividual
 		
 	func get_least_fitting():
-		var currentIndividual = individuals[0]
+		var currentIndividual = individuals[individuals.size() - 1]
 		for individual in individuals:
 			if individual.fitness < currentIndividual.fitness:
 				currentIndividual = individual
@@ -117,13 +129,13 @@ class Population:
 		return currentIndividual
 		
 	func get_second_least_fitting():
-		var currentIndividual = individuals[0]
-		var secondIndividual = individuals[0]
+		var currentIndividual = individuals[individuals.size() - 1]
+		var secondIndividual = individuals[individuals.size() - 1]
 		for individual in individuals:
 			if individual.fitness < currentIndividual.fitness:
 				secondIndividual = currentIndividual
 				currentIndividual = individual
-				
+		
 		return secondIndividual
 		
 	func index_of(individual):
@@ -150,6 +162,9 @@ class Population:
 		mutate(offspring_one)
 		mutate(offspring_two)
 		
+		calculate_fitness(offspring_one)
+		calculate_fitness(offspring_two)
+		
 		individuals[least_fitting_first] = offspring_one
 		individuals[least_fitting_second] = offspring_two
 	
@@ -163,7 +178,6 @@ class Population:
 			else:
 				child.gene_locations[i] = dad.gene_locations[i]  #(dad.gene_locations[i] + mom.gene_locations[i]) / 2
 		
-		calculate_fitness(child)
 		return child
 		
 	func mutate(individual):
@@ -174,7 +188,19 @@ class Population:
 				individual.gene_locations[i] = helper.random_node_position()
 		
 	
+	func sort():
+		individuals.sort_custom(Individual, "sort_descending")
+	
 	func select():
+		randomize()
+		var random = rand_range(0.0, 1.0)
+		if random < 0.8:
+			var index = randi() % individuals.size()
+			return individuals[index]
+		else:
+			return get_most_fitting()
+		
+		return 
 		var fitnessSum = 0
 		for indiv in individuals:
 			fitnessSum += indiv.fitness 
@@ -182,6 +208,7 @@ class Population:
 		var roll = rand_range(0.0, 1.0) * fitnessSum
 		for indiv in individuals:
 			if roll < indiv.fitness:
+				print("chose with indiv " + str(indiv.fitness))
 				return indiv
 			else:
 				roll -= indiv.fitness
@@ -193,8 +220,10 @@ class Population:
 
 var population : Population
 
+export var run_simulation = true
 export var generations_count = 1000
 export var mutation_rate = 0.05
+
 export var top_left_corner : Vector2
 export var bottom_right_corner : Vector2
 
@@ -207,43 +236,39 @@ var helper
 
 func _ready():
 	yield(get_tree().root, "ready")
-	
-	helper = Helper.new(top_left_corner, bottom_right_corner, get_world_2d().direct_space_state, get_tree())
-	
-	population = Population.new(simulation_runner, mutation_rate, helper)
-	population.generate_gen_zero()
-	population.calculate_all_fitness()
-	place_real_beacons_on_most_fitting()
-	
-	print("--")
-	print(population.get_most_fitting().fitness)
-	print(population.index_of(population.get_most_fitting()))
-	print(population.get_second_most_fitting().fitness)
-	print(population.get_least_fitting().fitness)
-	print(population.index_of(population.get_least_fitting()))
-	
-	is_ready = true
+	if run_simulation:
+		helper = Helper.new(top_left_corner, bottom_right_corner, get_world_2d().direct_space_state, get_tree())
+		
+		population = Population.new(simulation_runner, mutation_rate, helper)
+		population.generate_gen_zero()
+		population.calculate_all_fitness()
+		place_real_beacons_on_most_fitting()
+		
+		print("--")
+		print(population.get_most_fitting().fitness)
+		print(population.index_of(population.get_most_fitting()))
+		print(population.get_second_most_fitting().fitness)
+		print(population.get_least_fitting().fitness)
+		print(population.index_of(population.get_least_fitting()))
+		
+		is_ready = true
 
 
 func _process(delta):
-	if is_ready and current_generation < generations_count:
+	if is_ready and current_generation < generations_count and run_simulation:
 		print("Generation: " + str(current_generation))
-		print(population.get_most_fitting().fitness)
 		current_generation = current_generation + 1
 		population.crossover()
+		var most_fitting = population.get_most_fitting()
+		print(most_fitting.fitness)
+		population.sort()
 		place_real_beacons_on_most_fitting()
-		
 
-func calculate_fitness():
-	pass
-
-func crossover():
-	pass
-	
-func mutate():
-	pass
 
 func place_real_beacons_on_most_fitting():
 	var mostFitting = population.get_most_fitting()
 	for i in range(mostFitting.gene_count):
 		beacons[i].global_position = mostFitting.gene_locations[i]
+		
+	# Do it for colors
+	simulation_runner.simulate_from_positions(mostFitting.gene_locations, true)

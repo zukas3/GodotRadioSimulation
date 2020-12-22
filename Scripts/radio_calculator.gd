@@ -72,6 +72,8 @@ func get_log_distance_to_position(position):
 	var localPos = get_global_position()
 	var beaconPos = position
 	var distance = beaconPos.distance_to(localPos) / meterInGodotUnits
+	if distance < 0.1 and distance > -0.1:
+		distance = 1
 	var ldpl = calculateLogDistancePathLoss(distance)
 	ldpl = calculateRadioLinkBudget(ldpl)
 	return ldpl
