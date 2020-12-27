@@ -558,12 +558,9 @@ width = 5.0
 
 [node name="SimulationRunner" type="Node2D" parent="."]
 script = ExtResource( 6 )
-test_locations = PoolVector2Array( 54.73, 25.263, 54.73, 25.263 )
-test_accurate_locations = [ Vector2( 54.73, 0 ), null ]
 
 [node name="GeneticAlgorithmRunner" type="Node2D" parent="SimulationRunner"]
 script = ExtResource( 8 )
-run_simulation = false
 generations_count = 99999999
 mutation_rate = 0.25
 top_left_corner = Vector2( -1000, -762 )

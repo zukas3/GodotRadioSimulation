@@ -95,7 +95,7 @@ class Population:
 		var result = sim_runner.simulate_from_positions(individual.gene_locations)
 		var fitness = 1.0
 		if result.out_of_range_count != 0:
-			fitness = (0.8 / result.out_of_range_count) + (result.totalDb / -90.0) * 0.2
+			fitness = (0.8 * result.node_index) + (result.totalDb / -90.0) * 0.2
 		individual.fitness = fitness
 	
 	func calculate_all_fitness():

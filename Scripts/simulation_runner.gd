@@ -2,10 +2,7 @@ extends Node
 
 class Sorter:
 	static func sort_clockwise(a, b):
-		if a.y * b.y <= 0:
-			return a.y < b.y or (a.y == b.y and a.x < b.x)
-		else:
-			return a.x * b.y - a.y * b.x < 0
+		return a.angle() < b.angle()
 
 const SPACING_MULTIPLIER = 20
 
@@ -39,6 +36,7 @@ class SimulationResults:
 	var minDb
 	var maxDb
 	var out_of_range_count
+	var node_index
 	
 	func _init():
 		pass
@@ -162,10 +160,13 @@ func simulate_from_positions(positions, should_color=false) -> SimulationResults
 	
 	var totalDb = 0.0
 	var incrementCount = 1
+	var node_iteration = 0
 	var out_of_range_count = 0
 	var node_index = 0.0
 	
 	for node in path_nodes:
+		node_iteration += 1
+		
 		receiver.global_position = node.global_position
 		# reachable beacons from this node point
 		var reachable_beacon_count = 0
@@ -187,27 +188,33 @@ func simulate_from_positions(positions, should_color=false) -> SimulationResults
 			var dir_vector = receiver.global_position.direction_to(beacon)
 			dir_vectors.append(dir_vector)
 		
-		dir_vectors.sort_custom(Sorter, "sort_clockwise")
-		if dir_vectors.size() >= 3:
+		if dir_vectors.size() >= 2:
+			dir_vectors.sort_custom(Sorter, "sort_clockwise")
 			var total_angle = 0.0
 			for i in range(dir_vectors.size() - 1):
 				total_angle += abs(dir_vectors[i].angle_to(dir_vectors[i+1]))
 				
-			print("Total angle: " + str(total_angle))
-			
-		if reachable_beacon_count >= 3:
+			var angle_index = (total_angle / (2*PI))
+			node_index += ((total_angle / (2*PI)) - node_index) / node_iteration
 			if should_color:
-				node.self_modulate = Color(0, 1, 0, 1)
+				node.self_modulate = Color(1 - angle_index, angle_index, 0, 1)
+			
 		else:
-			out_of_range_count += 1
+			node_index += 0
 			if should_color:
 				node.self_modulate = Color(1, 0, 0, 1)
+			
+		if reachable_beacon_count >= 3:
+			pass
+		else:
+			out_of_range_count += 1
 			
 	
 
 	var results = SimulationResults.new()
 	results.totalDb = totalDb
 	results.out_of_range_count = out_of_range_count
+	results.node_index = node_index
 	return results
 	
 			
