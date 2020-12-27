@@ -1,5 +1,12 @@
 extends Node
 
+class Sorter:
+	static func sort_clockwise(a, b):
+		if a.y * b.y <= 0:
+			return a.y < b.y or (a.y == b.y and a.x < b.x)
+		else:
+			return a.x * b.y - a.y * b.x < 0
+
 const SPACING_MULTIPLIER = 20
 
 const OFFSET_X = -25.2631
@@ -9,9 +16,7 @@ const OFFSET_Y = -54.7298
 const STRETCH_MULTIPLIER_X = 0.898
 const STRETCH_MULTIPLIER_Y = 1.546
 
-# Location in latitude, longitude
-export var test_locations = PoolVector2Array()
-export var test_accurate_locations = []
+export var run_spreadsheet_test = false
 
 # spreadsheet holding all the info about test run data
 var spreadsheet
@@ -43,7 +48,8 @@ func _ready():
 	
 	spreadsheet = read_csv()
 	create_path()
-	begin_spreadsheet_run()
+	if run_spreadsheet_test:
+		begin_spreadsheet_run()
 	hook_to_ui()
 
 
@@ -83,7 +89,7 @@ func begin_spreadsheet_run():
 	var minDb = 0
 	var maxDb = -100
 	var incrementCount = 0
-	var tolerance = -90
+	var tolerance = -96
 	
 	var real_db = 0.0
 	var real_miss = 0
@@ -115,6 +121,8 @@ func begin_spreadsheet_run():
 			if real != 0:
 				real_db += (real - real_db) / incrementCount
 			else:
+				incrementCount -= 1
+				continue
 				real_miss += 1
 				
 			var ldpl = receiver.get_model_budget_to_position(receiver.ModelType.LOG_DISTANCE, beaconPos)
@@ -155,19 +163,38 @@ func simulate_from_positions(positions, should_color=false) -> SimulationResults
 	var totalDb = 0.0
 	var incrementCount = 1
 	var out_of_range_count = 0
+	var node_index = 0.0
 	
 	for node in path_nodes:
+		receiver.global_position = node.global_position
 		# reachable beacons from this node point
 		var reachable_beacon_count = 0
+		var reachable_beacon_positions = []
 		for beacon_pos in positions:
-			receiver.global_position = node.global_position
 			var pl = receiver.get_log_distance_to_position(beacon_pos) 
 			
 			if pl > tolerance:
 				reachable_beacon_count += 1
+				reachable_beacon_positions.append(beacon_pos)
 				totalDb += int((pl - totalDb) / incrementCount)
 				assert(typeof(totalDb) != TYPE_STRING)
 				incrementCount = incrementCount + 1
+			# End inner loop
+		
+		# Get node index
+		var dir_vectors = []
+		for beacon in reachable_beacon_positions:
+			var dir_vector = receiver.global_position.direction_to(beacon)
+			dir_vectors.append(dir_vector)
+		
+		dir_vectors.sort_custom(Sorter, "sort_clockwise")
+		if dir_vectors.size() >= 3:
+			var total_angle = 0.0
+			for i in range(dir_vectors.size() - 1):
+				total_angle += abs(dir_vectors[i].angle_to(dir_vectors[i+1]))
+				
+			print("Total angle: " + str(total_angle))
+			
 		if reachable_beacon_count >= 3:
 			if should_color:
 				node.self_modulate = Color(0, 1, 0, 1)
