@@ -25,7 +25,7 @@ onready var infoLabelSecond = $"../UICanvas/UI/VBox/HBoxContainer2/InfoLabel2"
 onready var pathPrefab = $"./PathPrefab"
 
 
-onready var receiver = get_tree().get_nodes_in_group("receivers")[0]
+onready var receiver = $"../RadioCalculator"
 onready var beacons = get_tree().get_nodes_in_group("beacons")
 
 
@@ -43,7 +43,7 @@ func _ready():
 	
 	spreadsheet = read_csv()
 	create_path()
-	#begin_test_run()
+	begin_spreadsheet_run()
 	hook_to_ui()
 
 
@@ -78,27 +78,68 @@ func create_path():
 		path_nodes.append(node_copy)
 		
 		
-# CURRENTLY UNUSED
-func begin_test_run():
+func begin_spreadsheet_run():
 	var totalDb = 0
 	var minDb = 0
 	var maxDb = -100
 	var incrementCount = 0
+	var tolerance = -90
 	
-	for node in path_nodes:
-		for beacon in beacons:
-			receiver.global_position = node.global_position
-			var pl = receiver.get_log_distance_to_position(beacon.global_position) 
-			totalDb += pl
-			incrementCount = incrementCount + 1
-			if minDb > pl:
-				minDb = pl
-			if maxDb < pl:
-				maxDb = pl
+	var real_db = 0.0
+	var real_miss = 0
+	var log_db = 0.0
+	var log_miss = 0
+	var itu_db = 0.0
+	var itu_miss = 0
+	var mk_db = 0.0
+	var mk_miss = 0
+	
+	# For every entry
+	for i in spreadsheet.size():
+		var entry = spreadsheet[i]
+		var long_and_lat = [float(entry[3]), float(entry[2])]
+		var global_coords = projectionVectorToGlobalCoords(long_and_lat)
+		
+		# Set receiver position
+		receiver.global_position = global_coords
+		
+		# Display all original data
+		var spreadsheet_data = ""
+		var simulated_data = ""
+		for j in range(4, 10):
+			incrementCount += 1
+			
+			var beaconPos = beacons[j-4].get_global_position()
+			# Real data
+			var real = float(entry[j])
+			if real != 0:
+				real_db += (real - real_db) / incrementCount
+			else:
+				real_miss += 1
 				
-	totalDb = totalDb / incrementCount;
+			var ldpl = receiver.get_model_budget_to_position(receiver.ModelType.LOG_DISTANCE, beaconPos)
+			if ldpl > tolerance:
+				log_db += (ldpl - log_db) / incrementCount
+			else:
+				log_miss += 1
+				
+			var itu = receiver.get_model_budget_to_position(receiver.ModelType.ITU, beaconPos)
+			if itu > tolerance:
+				itu_db += (itu - itu_db) / incrementCount
+			else:
+				itu_miss += 1
+				
+			var mk = receiver.get_model_budget_to_position(receiver.ModelType.MOTLEY_KEENAN, beaconPos)
+			if mk > tolerance:
+				mk_db += (mk - mk_db) / incrementCount
+			else:
+				mk_miss += 1
+
 	
-	print("minDb - {0} dB, maxDb - {1} dB, totalDb - {2} dB".format([minDb, maxDb, totalDb]))
+	print("Real data: average - {0} dB, miss - {1}".format([real_db, real_miss]))
+	print("Log: average - {0} dB, miss - {1}".format([log_db, log_miss]))
+	print("ITU: average - {0} dB, miss - {1}".format([itu_db, itu_miss]))
+	print("Motley: average - {0} dB, miss - {1}".format([mk_db, mk_miss]))
 	var results = SimulationResults.new()
 	results.totalDb = totalDb
 	results.minDb = minDb
@@ -124,7 +165,6 @@ func simulate_from_positions(positions, should_color=false) -> SimulationResults
 			
 			if pl > tolerance:
 				reachable_beacon_count += 1
-				var stupid = pl
 				totalDb += int((pl - totalDb) / incrementCount)
 				assert(typeof(totalDb) != TYPE_STRING)
 				incrementCount = incrementCount + 1
@@ -180,7 +220,7 @@ func scan_position(index):
 	var spreadsheet_data = ""
 	var simulated_data = ""
 	for i in range(4, 10):
-		simulated_data += receiver.calculate_to_position(beacons[i-4].get_global_position()) + '\n'
+		simulated_data += receiver.get_string_info_from_position(beacons[i-4].get_global_position()) + '\n'
 		spreadsheet_data += spreadsheet[0][i] + " - Captured: "  + "%.2f" % float(entry[i]) + '\n'
 		
 	infoLabel.text = spreadsheet_data #'{}\n{}\n'.format([entry[4], entry[5]], '{}')

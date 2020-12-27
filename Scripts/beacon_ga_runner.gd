@@ -174,7 +174,7 @@ class Population:
 		for i in range(start, end):
 			var target_gene = dad.gene_locations[i]
 			if child.has_similar_location(target_gene):
-				child.gene_locations[i] = (dad.gene_locations[i] + mom.gene_locations[i]) / 2
+				child.gene_locations[i] = helper.random_node_position()#(dad.gene_locations[i] + mom.gene_locations[i]) / 2
 			else:
 				child.gene_locations[i] = dad.gene_locations[i]  #(dad.gene_locations[i] + mom.gene_locations[i]) / 2
 		
@@ -194,11 +194,13 @@ class Population:
 	func select():
 		randomize()
 		var random = rand_range(0.0, 1.0)
-		if random < 0.8:
+		if random > 0.80:
+			return get_most_fitting()
+		elif random > 0.75:
+			return get_second_most_fitting()
+		else:
 			var index = randi() % individuals.size()
 			return individuals[index]
-		else:
-			return get_most_fitting()
 		
 		return 
 		var fitnessSum = 0
@@ -256,13 +258,15 @@ func _ready():
 
 func _process(delta):
 	if is_ready and current_generation < generations_count and run_simulation:
-		print("Generation: " + str(current_generation))
 		current_generation = current_generation + 1
 		population.crossover()
-		var most_fitting = population.get_most_fitting()
-		print(most_fitting.fitness)
 		population.sort()
 		place_real_beacons_on_most_fitting()
+		
+		if current_generation % 10 == 0:
+			print("Generation: " + str(current_generation))
+			var most_fitting = population.get_most_fitting()
+			print(most_fitting.fitness)
 
 
 func place_real_beacons_on_most_fitting():
