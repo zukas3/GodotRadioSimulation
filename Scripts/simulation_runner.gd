@@ -194,8 +194,9 @@ func simulate_from_positions(positions, should_color=false) -> SimulationResults
 			for i in range(dir_vectors.size() - 1):
 				total_angle += abs(dir_vectors[i].angle_to(dir_vectors[i+1]))
 				
-			var angle_index = (total_angle / (2*PI))
-			node_index += ((total_angle / (2*PI)) - node_index) / node_iteration
+			var angle_index = (total_angle / (PI))
+			angle_index = min(angle_index, 1)
+			node_index += (angle_index - node_index) / node_iteration
 			if should_color:
 				node.self_modulate = Color(1 - angle_index, angle_index, 0, 1)
 			

@@ -586,6 +586,8 @@ position = Vector2( 119.594, -139.379 )
 "beacons",
 ]]
 position = Vector2( -910.825, -81.4026 )
+scale = Vector2( 1.5, 1.5 )
+z_index = 1
 
 [node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_1"]
 scale = Vector2( 0.55455, 0.55455 )
@@ -609,6 +611,8 @@ __meta__ = {
 "beacons",
 ]]
 position = Vector2( -189.185, -391.345 )
+scale = Vector2( 1.5, 1.5 )
+z_index = 1
 
 [node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_2"]
 scale = Vector2( 0.55455, 0.55455 )
@@ -632,6 +636,8 @@ __meta__ = {
 "beacons",
 ]]
 position = Vector2( -382.844, -179.317 )
+scale = Vector2( 1.5, 1.5 )
+z_index = 1
 
 [node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_3"]
 scale = Vector2( 0.55455, 0.55455 )
@@ -655,6 +661,8 @@ __meta__ = {
 "beacons",
 ]]
 position = Vector2( 33.1947, -70.2178 )
+scale = Vector2( 1.5, 1.5 )
+z_index = 1
 
 [node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_4"]
 scale = Vector2( 0.55455, 0.55455 )
@@ -678,6 +686,8 @@ __meta__ = {
 "beacons",
 ]]
 position = Vector2( 509.284, 13.0818 )
+scale = Vector2( 1.5, 1.5 )
+z_index = 1
 
 [node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_5"]
 scale = Vector2( 0.55455, 0.55455 )
@@ -701,6 +711,8 @@ __meta__ = {
 "beacons",
 ]]
 position = Vector2( -827.777, -454.323 )
+scale = Vector2( 1.5, 1.5 )
+z_index = 1
 
 [node name="Sprite" type="Sprite" parent="BeaconGroup/Beacon_6"]
 scale = Vector2( 0.55455, 0.55455 )
