@@ -235,6 +235,7 @@ onready var beacons = get_tree().get_nodes_in_group("beacons")
 var current_generation = 0
 var is_ready = false
 var helper
+var milestones = []
 
 func _ready():
 	yield(get_tree().root, "ready")
@@ -258,15 +259,21 @@ func _ready():
 
 func _process(delta):
 	if is_ready and current_generation < generations_count and run_simulation:
-		current_generation = current_generation + 1
+		current_generation += 1
 		population.crossover()
 		population.sort()
 		place_real_beacons_on_most_fitting()
 		
+		var most_fitting = population.get_most_fitting()
 		if current_generation % 10 == 0:
 			print("Generation: " + str(current_generation))
-			var most_fitting = population.get_most_fitting()
 			print(most_fitting.fitness)
+			
+		if current_generation == 1 or current_generation == 10 or current_generation == 100 or current_generation == 1000 or current_generation == 10000:
+				milestones.append(most_fitting.fitness)
+				print("Milestone!")
+				print(milestones)
+				pass
 
 
 func place_real_beacons_on_most_fitting():

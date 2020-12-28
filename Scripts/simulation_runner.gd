@@ -188,7 +188,7 @@ func simulate_from_positions(positions, should_color=false) -> SimulationResults
 			var dir_vector = receiver.global_position.direction_to(beacon)
 			dir_vectors.append(dir_vector)
 		
-		if dir_vectors.size() >= 2:
+		if dir_vectors.size() >= 3:
 			dir_vectors.sort_custom(Sorter, "sort_clockwise")
 			var total_angle = 0.0
 			for i in range(dir_vectors.size() - 1):
