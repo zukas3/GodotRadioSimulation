@@ -72,7 +72,7 @@ class Individual:
 class Population:
 	
 	var mutation_chance
-	var individual_count = 50
+	var individual_count = 100
 	
 	var individuals = []
 	
