@@ -561,7 +561,8 @@ script = ExtResource( 6 )
 
 [node name="GeneticAlgorithmRunner" type="Node2D" parent="SimulationRunner"]
 script = ExtResource( 8 )
-generations_count = 99999999
+run_simulation = false
+generations_count = 10001
 mutation_rate = 0.25
 top_left_corner = Vector2( -1000, -762 )
 bottom_right_corner = Vector2( 1343, 252 )

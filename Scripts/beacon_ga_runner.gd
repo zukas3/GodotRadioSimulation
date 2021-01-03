@@ -224,6 +224,7 @@ var population : Population
 
 export var run_simulation = true
 export var generations_count = 1000
+export var simulation_count = 5
 export var mutation_rate = 0.05
 
 export var top_left_corner : Vector2
@@ -232,33 +233,39 @@ export var bottom_right_corner : Vector2
 onready var simulation_runner = $".."
 onready var beacons = get_tree().get_nodes_in_group("beacons")
 
+var current_simulation = 0
 var current_generation = 0
 var is_ready = false
 var helper
-var milestones = []
+var milestones = [0, 0, 0, 0, 0, 0]
+var generation_to_index = {1: 0, 10: 1, 100: 2, 1000: 3, 5000: 4, 10000: 5}
 
 func _ready():
 	yield(get_tree().root, "ready")
 	if run_simulation:
-		helper = Helper.new(top_left_corner, bottom_right_corner, get_world_2d().direct_space_state, get_tree())
-		
-		population = Population.new(simulation_runner, mutation_rate, helper)
-		population.generate_gen_zero()
-		population.calculate_all_fitness()
-		place_real_beacons_on_most_fitting()
-		
-		print("--")
-		print(population.get_most_fitting().fitness)
-		print(population.index_of(population.get_most_fitting()))
-		print(population.get_second_most_fitting().fitness)
-		print(population.get_least_fitting().fitness)
-		print(population.index_of(population.get_least_fitting()))
-		
-		is_ready = true
+		create_simulation()
 
+func create_simulation():
+	current_simulation += 1
+	current_generation = 0
+	helper = Helper.new(top_left_corner, bottom_right_corner, get_world_2d().direct_space_state, get_tree())
+		
+	population = Population.new(simulation_runner, mutation_rate, helper)
+	population.generate_gen_zero()
+	population.calculate_all_fitness()
+	place_real_beacons_on_most_fitting()
+	
+	print("--")
+	print(population.get_most_fitting().fitness)
+	print(population.index_of(population.get_most_fitting()))
+	print(population.get_second_most_fitting().fitness)
+	print(population.get_least_fitting().fitness)
+	print(population.index_of(population.get_least_fitting()))
+		
+	is_ready = true
 
 func _process(delta):
-	if is_ready and current_generation < generations_count and run_simulation:
+	if is_ready and current_generation <= generations_count and run_simulation:
 		current_generation += 1
 		population.crossover()
 		population.sort()
@@ -269,11 +276,26 @@ func _process(delta):
 			print("Generation: " + str(current_generation))
 			print(most_fitting.fitness)
 			
-		if current_generation == 1 or current_generation == 10 or current_generation == 100 or current_generation == 1000 or current_generation == 10000:
-				milestones.append(most_fitting.fitness)
-				print("Milestone!")
+		if current_generation == 1 or current_generation == 10 or current_generation == 100 or current_generation == 1000 or current_generation == 5000 or current_generation == 10000:
+				milestones[generation_to_index[current_generation]] += most_fitting.fitness
 				print(milestones)
+				if current_generation == 10000:
+					pass
 				pass
+				
+		if current_generation == generations_count:
+			if simulation_count >= current_simulation:
+				create_simulation()
+			else:
+				print("before")
+				print(milestones)
+				for i in range(6):
+					milestones[i] = milestones[i] / (simulation_count+1)
+					
+				print("after")
+				print(milestones)
+				is_ready = false
+			
 
 
 func place_real_beacons_on_most_fitting():
