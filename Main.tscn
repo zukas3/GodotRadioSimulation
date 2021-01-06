@@ -1,8 +1,7 @@
-[gd_scene load_steps=127 format=2]
+[gd_scene load_steps=126 format=2]
 
 [ext_resource path="res://Scripts/CameraMovement.gd" type="Script" id=1]
 [ext_resource path="res://MIF3FloorPhoto.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/RaycastRenderer.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/radio_calculator.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/simulation_runner.gd" type="Script" id=6]
@@ -543,18 +542,6 @@ text = "Slide to update results"
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 1 )
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-visible = false
-position = Vector2( 377.588, -403.8 )
-rotation = 0.296706
-enabled = true
-cast_to = Vector2( 200, -25.699 )
-script = ExtResource( 3 )
-
-[node name="LineCast" type="Line2D" parent="RayCast2D"]
-position = Vector2( -0.490433, -2.3273 )
-width = 5.0
 
 [node name="SimulationRunner" type="Node2D" parent="."]
 script = ExtResource( 6 )
